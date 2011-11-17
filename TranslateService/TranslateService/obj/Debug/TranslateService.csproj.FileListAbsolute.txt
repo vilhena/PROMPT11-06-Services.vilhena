@@ -1,0 +1,5 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\TranslateService\TranslateService\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\TranslateService\TranslateService\bin\TranslateService.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\TranslateService\TranslateService\bin\TranslateService.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\TranslateService\TranslateService\obj\Debug\TranslateService.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\TranslateService\TranslateService\obj\Debug\TranslateService.pdb
