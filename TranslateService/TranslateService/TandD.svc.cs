@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Activation;
 using System.Text;
 using TranslateService.api.microsofttranslator.com;
 using TranslateService.services.aonaware.com;
 
 namespace TranslateService
 {
+    [ServiceBehavior(Namespace = "webclientvilhena.apphb.com")]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class TandD : ITandD
     {
         private const string Apiid = "C1E6D88CE2967328BBA9BC6C932B9D177247CAE5";
