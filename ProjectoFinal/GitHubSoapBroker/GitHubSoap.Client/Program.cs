@@ -29,15 +29,15 @@ namespace GitHubSoap.Client
                                        //milestone = 1,
                                        title = "My first Issue"
                                    };
-            var newIssue = service.CreateIssue(issueRequest, "vilhena", "PROMPT11-06-Services.vilhena");
+            var newIssue = service.CreateIssue(issueRequest, "vilhena-services", "fillwithstuff");
 
-            var created = service.ListIssuesForRepository("vilhena", "PROMPT11-06-Services.vilhena");
+            var created = service.ListIssuesForRepository("vilhena-services", "fillwithstuff");
 
             issueRequest.title = "test body updated " + newIssue.number;
-            var editedissue = service.EditIssue(issueRequest, "vilhena" , "PROMPT11-06-Services.vilhena", newIssue.number);
+            var editedissue = service.EditIssue(issueRequest, "vilhena-services", "fillwithstuff", newIssue.number);
 
 
-            var findIssue = service.GetSingleIssue("vilhena", "PROMPT11-06-Services.vilhena", editedissue.number);
+            var findIssue = service.GetSingleIssue("vilhena-services", "fillwithstuff", editedissue.number);
 
             var myIssues = service.ListYourIssues();
 
