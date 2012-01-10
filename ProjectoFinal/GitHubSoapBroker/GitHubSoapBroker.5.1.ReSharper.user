@@ -1,0 +1,214 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:Issue.cs" caret="3640" fromTop="117" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:Milestone.cs" caret="54" fromTop="2" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:Label.cs" caret="64" fromTop="2" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:Request.cs" caret="64" fromTop="2" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:IssueRequest.cs" caret="849" fromTop="16" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:User.cs" caret="62" fromTop="2" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:ServiceContracts/f:IGitHubService.cs" caret="727" fromTop="22" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/f:Program.cs" caret="414" fromTop="2" />
+      <File id="CB4E8404-85EC-4FE6-9453-7C47142907B8/f:Program.cs" caret="1658" fromTop="6" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3313" fromTop="7" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:Request.cs" caret="64" fromTop="2" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:User.cs" caret="62" fromTop="2" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="460" fromTop="2" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/f:Program.cs" caret="1263" fromTop="6" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="20" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:IssueRequest.cs" caret="450" fromTop="17" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:IssueRequest.cs" caret="204" fromTop="8" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:IssueRequest.cs" caret="903" fromTop="20" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:IssueRequest.cs" caret="511" fromTop="5" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="3" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="15" />
+      <File id="CB4E8404-85EC-4FE6-9453-7C47142907B8/f:Program.cs" caret="1075" fromTop="13" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:DataContracts/f:IssueRequest.cs" caret="835" fromTop="16" />
+      <File id="CB4E8404-85EC-4FE6-9453-7C47142907B8/f:Program.cs" caret="603" fromTop="6" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/f:Program.cs" caret="414" fromTop="5" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="5" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="7" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3345" fromTop="12" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3704" fromTop="19" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:ServiceContracts/f:IGitHubService.cs" caret="423" fromTop="13" />
+      <File id="CB4E8404-85EC-4FE6-9453-7C47142907B8/f:Program.cs" caret="1328" fromTop="6" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="24" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="17" />
+      <File id="AE19EDD8-008F-4659-95BF-FEC2BAF69326/d:ServiceContracts/f:IGitHubService.cs" caret="727" fromTop="22" />
+      <File id="CB4E8404-85EC-4FE6-9453-7C47142907B8/f:Program.cs" caret="1648" fromTop="12" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="8" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="12" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3261" fromTop="15" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="711" fromTop="4" />
+      <File id="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C/d:GitHub/f:GitHubService.cs" caret="3313" fromTop="7" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="interface" priority="0" />
+      <Item value="ctor" priority="0" />
+      <Item value="prop" priority="44" />
+      <Item value="HttpClient`0" priority="1" />
+      <Item value="private" priority="0" />
+      <Item value="httpClient" priority="1" />
+      <Item value="_client" priority="0" />
+      <Item value="return" priority="4" />
+      <Item value="res" priority="0" />
+      <Item value="string" priority="35" />
+      <Item value="this" priority="0" />
+      <Item value="user" priority="0" />
+      <Item value="List" priority="4" />
+      <Item value="Issue`0" priority="7" />
+      <Item value="issues" priority="2" />
+      <Item value="new" priority="25" />
+      <Item value="List&lt;Issue&gt;" priority="0" />
+      <Item value="var" priority="13" />
+      <Item value="IEnumerable" priority="1" />
+      <Item value="respose" priority="0" />
+      <Item value="int" priority="8" />
+      <Item value="User`0" priority="1" />
+      <Item value="DateTime`0" priority="10" />
+      <Item value="client" priority="5" />
+      <Item value="service" priority="8" />
+      <Item value="closed_at" priority="2" />
+      <Item value="value" priority="0" />
+      <Item value="null" priority="5" />
+      <Item value="DateTime" priority="0" />
+      <Item value="IDataContractSurrogate`0" priority="0" />
+      <Item value="if" priority="0" />
+      <Item value="DataContract" priority="2" />
+      <Item value="DataMember" priority="2" />
+      <Item value="IGitHubService`0" priority="0" />
+      <Item value="BasicHttpBinding`0" priority="1" />
+      <Item value="OperationContract" priority="3" />
+      <Item value="SessionMode" priority="0" />
+      <Item value="SessionMode`0" priority="0" />
+      <Item value="host" priority="0" />
+      <Item value="Console`0" priority="0" />
+      <Item value="channel" priority="0" />
+      <Item value="public" priority="2" />
+      <Item value="newIssue" priority="5" />
+      <Item value="Client" priority="6" />
+      <Item value="HttpContent`0" priority="3" />
+      <Item value="response" priority="4" />
+      <Item value="ObjectContent`0" priority="0" />
+      <Item value="NewIssue`0" priority="0" />
+      <Item value="mediaType" priority="0" />
+      <Item value="NewIssue" priority="0" />
+      <Item value="assignee" priority="0" />
+      <Item value="body" priority="0" />
+      <Item value="labels" priority="0" />
+      <Item value="milestone" priority="0" />
+      <Item value="AuthenticationHeaderValue" priority="0" />
+      <Item value="Encoding`0" priority="0" />
+      <Item value="Convert`0" priority="0" />
+      <Item value="byteArray" priority="0" />
+      <Item value="editIssue" priority="1" />
+      <Item value="AddAuthentication`0" priority="1" />
+      <Item value="HttpRequestMessage" priority="1" />
+      <Item value="HttpMethod" priority="1" />
+      <Item value="IssueRequest`0" priority="0" />
+      <Item value="Uri" priority="0" />
+      <Item value="MediaTypeFormatter`0" priority="5" />
+      <Item value="id" priority="1" />
+      <Item value="JsonMediaTypeFormatter`0" priority="0" />
+      <Item value="request" priority="2" />
+      <Item value="issueRequest" priority="1" />
+      <Item value="created" priority="1" />
+      <Item value="System" priority="0" />
+      <Item value="Web" priority="0" />
+      <Item value="Net" priority="0" />
+      <Item value="Http" priority="0" />
+      <Item value="CharEnumerator`0" priority="0" />
+      <Item value="editedissue" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:GitHubSoap.Broker.GitHub.GitHubService">
+      <Item value="ListIssuesForRepository`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Parse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Nullable`1">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.ServiceHost">
+      <Item value="Description" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.InstanceContextMode">
+      <Item value="Single" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="ReadKey`0" priority="0" />
+      <Item value="ReadLine`0" priority="0" />
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.ChannelFactory`1">
+      <Item value="CreateChannel`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:GitHubSoap.Domain.ServiceContracts.IGitHubService">
+      <Item value="GetType`0" priority="0" />
+      <Item value="ListIssuesForRepository`0" priority="1" />
+      <Item value="CreateIssue`0" priority="0" />
+      <Item value="EditIssue`0" priority="0" />
+      <Item value="GetSingleIssue`0" priority="0" />
+      <Item value="ListYourIssues`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.HttpClient">
+      <Item value="PostAsync`0" priority="0" />
+      <Item value="DefaultRequestHeaders" priority="0" />
+      <Item value="SendAsync`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.HttpResponseMessage">
+      <Item value="Content" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.HttpContent">
+      <Item value="ReadAsAsync`1" priority="4" />
+      <Item value="ReadAsStreamAsync`0" priority="0" />
+      <Item value="ReadAsStringAsync`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Threading.Tasks.Task`1">
+      <Item value="Result" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.Headers.HttpRequestHeaders">
+      <Item value="Authorization" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.Encoding">
+      <Item value="ASCII" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.Encoding">
+      <Item value="GetBytes`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToBase64String`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:GitHubSoap.Domain.DataContracts.Issue">
+      <Item value="number" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:GitHubSoap.Domain.DataContracts.IssueRequest">
+      <Item value="title" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.HttpRequestMessage`1">
+      <Item value="Headers" priority="1" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

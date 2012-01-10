@@ -1,0 +1,8 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\bin\Debug\ChatServiceServer.exe.config
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\bin\Debug\ChatServiceServer.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\bin\Debug\ChatServiceServer.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\bin\Debug\ChatContract.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\bin\Debug\ChatContract.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\obj\x86\Debug\ChatServiceServer.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceServer\obj\x86\Debug\ChatServiceServer.pdb

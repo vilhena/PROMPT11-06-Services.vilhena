@@ -1,0 +1,16 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoapBroker\bin\Debug\GitHubSoap.Broker.exe.config
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\GitHubSoap.Broker.exe.config
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\GitHubSoap.Broker.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\GitHubSoap.Broker.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\GitHubSoap.Domain.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\Microsoft.Json.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\Microsoft.Net.Http.Formatting.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\Microsoft.Server.Common.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\System.Net.Http.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\GitHubSoap.Domain.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\Microsoft.Json.xml
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\Microsoft.Net.Http.Formatting.xml
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\bin\Debug\System.Net.Http.xml
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\obj\x86\Debug\GitHubSoap.Broker.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Broker\obj\x86\Debug\GitHubSoap.Broker.pdb

@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="D940EDF4-D3E8-49CA-B44B-FE491B18A6F5" ModuleId="GitHubAtomProxy" />
+  <Module PersistentId="D5F64ABD-D15A-4E1F-8A04-79AA6A2730CA" ModuleId="GitHubService" />
+</Modules>

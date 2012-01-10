@@ -1,0 +1,11 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\bin\Debug\ChatServiceClient.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\bin\Debug\ChatServiceClient.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\bin\Debug\ChatContract.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\bin\Debug\ChatContract.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\ChatServiceClient.Chat.resources
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\ChatServiceClient.Properties.Resources.resources
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\ChatServiceClient.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClient\obj\x86\Debug\ChatServiceClient.pdb

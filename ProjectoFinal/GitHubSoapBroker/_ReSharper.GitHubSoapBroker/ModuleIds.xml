@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="5C576ED2-AA2A-4AA8-A488-0BA370DAE44C" ModuleId="GitHubSoapBroker" />
+  <Module PersistentId="AE19EDD8-008F-4659-95BF-FEC2BAF69326" ModuleId="GitHubSoap.Domain" />
+  <Module PersistentId="CB4E8404-85EC-4FE6-9453-7C47142907B8" ModuleId="GitHubSoap.Client" />
+</Modules>

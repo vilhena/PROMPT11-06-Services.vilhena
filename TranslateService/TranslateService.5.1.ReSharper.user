@@ -3,12 +3,49 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
   <RecentFiles>
-    <RecentFiles />
-    <RecentEdits />
+    <RecentFiles>
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:ITandD.cs" caret="251" fromTop="9" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Global.asax" caret="0" fromTop="0" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="533" fromTop="11" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Web.config" caret="4887" fromTop="22" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Global.asax.cs" caret="532" fromTop="6" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandDServiceHostFactory.cs" caret="157" fromTop="6" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TokenEndpointBehavior.cs" caret="173" fromTop="0" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:ITandD.cs" caret="943" fromTop="19" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1878" fromTop="22" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1294" fromTop="15" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:ITandD.cs" caret="842" fromTop="12" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Web.config" caret="2791" fromTop="15" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Web.config" caret="2001" fromTop="11" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1294" fromTop="19" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1648" fromTop="14" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1583" fromTop="21" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1366" fromTop="14" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="786" fromTop="6" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1295" fromTop="18" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:ITandD.cs" caret="442" fromTop="10" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:ITandD.cs" caret="610" fromTop="17" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="1135" fromTop="11" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:ITandD.cs" caret="251" fromTop="9" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandD.svc.cs" caret="390" fromTop="5" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Web.config" caret="4696" fromTop="18" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Web.config" caret="4887" fromTop="22" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:Global.asax.cs" caret="514" fromTop="6" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TokenEndpointBehavior.cs" caret="2305" fromTop="57" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TokenEndpointBehavior.cs" caret="451" fromTop="18" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandDServiceHostFactory.cs" caret="668" fromTop="14" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandDServiceHostFactory.cs" caret="668" fromTop="20" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandDServiceHostFactory.cs" caret="461" fromTop="15" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TandDServiceHostFactory.cs" caret="668" fromTop="21" />
+      <File id="5DA2043A-C077-4D8E-BAC8-B1823B7551F3/f:TokenEndpointBehavior.cs" caret="330" fromTop="14" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -21,4 +58,104 @@
     </NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="string" priority="6" />
+      <Item value="wordReq" priority="2" />
+      <Item value="public" priority="2" />
+      <Item value="class" priority="2" />
+      <Item value="DataContract" priority="1" />
+      <Item value="prop" priority="4" />
+      <Item value="DataMember" priority="1" />
+      <Item value="bool" priority="0" />
+      <Item value="var" priority="4" />
+      <Item value="new" priority="4" />
+      <Item value="MeaningResp`0" priority="0" />
+      <Item value="return" priority="2" />
+      <Item value="resp" priority="8" />
+      <Item value="private" priority="3" />
+      <Item value="microsofttranslator" priority="0" />
+      <Item value="com" priority="1" />
+      <Item value="LanguageServiceClient`0" priority="0" />
+      <Item value="languageService" priority="0" />
+      <Item value="static" priority="2" />
+      <Item value="NotFiniteNumberException`0" priority="0" />
+      <Item value="readonly" priority="0" />
+      <Item value="apiid" priority="0" />
+      <Item value="translation" priority="3" />
+      <Item value="true" priority="0" />
+      <Item value="services" priority="0" />
+      <Item value="aonaware" priority="0" />
+      <Item value="DictServiceSoapClient`0" priority="1" />
+      <Item value="dictService" priority="0" />
+      <Item value="if" priority="1" />
+      <Item value="wordDef" priority="1" />
+      <Item value="foreach" priority="0" />
+      <Item value="List&lt;string&gt;" priority="0" />
+      <Item value="means" priority="1" />
+      <Item value="definition" priority="0" />
+      <Item value="DictServiceSoapClient" priority="0" />
+      <Item value="_languageServiceClient" priority="0" />
+      <Item value="false" priority="0" />
+      <Item value="Namespace" priority="2" />
+      <Item value="ServiceBehavior" priority="0" />
+      <Item value="ServiceHostFactory" priority="0" />
+      <Item value="typeof" priority="1" />
+      <Item value="ITandD`0" priority="1" />
+      <Item value="override" priority="2" />
+      <Item value="ret" priority="3" />
+      <Item value="base" priority="0" />
+      <Item value="IFormatProvider`0" priority="1" />
+      <Item value="endpoint" priority="1" />
+      <Item value="null" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:TranslateService.api.microsofttranslator.com.LanguageServiceClient">
+      <Item value="Translate`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:TranslateService.WordReq">
+      <Item value="Word" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:TranslateService.MeaningResp">
+      <Item value="OriginalWord" priority="1" />
+      <Item value="TranslatedWord" priority="1" />
+      <Item value="Meanings" priority="2" />
+      <Item value="Translated" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:TranslateService.services.aonaware.com.DictServiceSoapClient">
+      <Item value="Define`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:TranslateService.services.aonaware.com.WordDefinition">
+      <Item value="Definitions" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:TranslateService.services.aonaware.com.Definition">
+      <Item value="WordDefinition" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="ToArray`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.Routing.RouteTable">
+      <Item value="Routes" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Routing.RouteCollection">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.ServiceHost">
+      <Item value="Description" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Description.ServiceDescription">
+      <Item value="Endpoints" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Description.ServiceEndpointCollection">
+      <Item value="Find`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Description.ServiceEndpoint">
+      <Item value="Behaviors" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyedByTypeCollection`1">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>

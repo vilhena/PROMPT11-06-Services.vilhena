@@ -1,0 +1,8 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\bin\Debug\GitHubSoap.Client.exe.config
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\bin\Debug\GitHubSoap.Client.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\bin\Debug\GitHubSoap.Client.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\obj\x86\Debug\GitHubSoap.Client.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\obj\x86\Debug\GitHubSoap.Client.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\bin\Debug\GitHubSoap.Domain.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client\bin\Debug\GitHubSoap.Domain.pdb

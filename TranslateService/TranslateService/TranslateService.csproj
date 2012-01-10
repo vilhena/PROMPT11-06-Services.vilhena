@@ -115,6 +115,8 @@
     <Compile Include="TandD.svc.cs">
       <DependentUpon>TandD.svc</DependentUpon>
     </Compile>
+    <Compile Include="TandDServiceHostFactory.cs" />
+    <Compile Include="TokenEndpointBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

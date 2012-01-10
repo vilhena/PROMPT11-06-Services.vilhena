@@ -1,0 +1,122 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="1" />
+      <Item value="string" priority="3" />
+      <Item value="return" priority="1" />
+      <Item value="host" priority="0" />
+      <Item value="this" priority="4" />
+      <Item value="RouteTable" priority="1" />
+      <Item value="HttpApplication`0" priority="0" />
+      <Item value="HttpContext`0" priority="0" />
+      <Item value="AtomWebApiService`0" priority="0" />
+      <Item value="routes" priority="0" />
+      <Item value="class" priority="0" />
+      <Item value="override" priority="0" />
+      <Item value="ctor" priority="0" />
+      <Item value="base" priority="0" />
+      <Item value="true" priority="0" />
+      <Item value="new" priority="1" />
+      <Item value="Formatters" priority="0" />
+      <Item value="AtomFeedVersionFormatter`0" priority="0" />
+      <Item value="varsion" priority="0" />
+      <Item value="version" priority="0" />
+      <Item value="syndicationFeed" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.ApplicationServer.Http.HttpServiceHost">
+      <Item value="AddHttpEndpoint`0" priority="0" />
+      <Item value="BaseAddresses" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.Routing.RouteTable">
+      <Item value="Routes" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.UI.MvcApplication">
+      <Item value="Context" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.HttpContext">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpContext">
+      <Item value="Handler" priority="0" />
+      <Item value="Server" priority="0" />
+      <Item value="CurrentHandler" priority="0" />
+      <Item value="Profile" priority="0" />
+      <Item value="ApplicationInstance" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Routing.RouteCollection">
+      <Item value="MapPageRoute`0" priority="0" />
+      <Item value="MapServiceRoute`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.AtomFeedServiceConfiguration">
+      <Item value="Formatters" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.Formatting.MediaTypeFormatterCollection">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.AtomFeedService">
+      <Item value="GetType`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="Assembly" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Version">
+      <Item value="Major" priority="0" />
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Web.config" caret="677" fromTop="14" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:packages.config" caret="0" fromTop="0" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="2041" fromTop="24" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedHttpConfiguration.cs" caret="287" fromTop="9" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1095" fromTop="8" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1314" fromTop="11" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="386" fromTop="8" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1324" fromTop="20" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="424" fromTop="6" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1324" fromTop="18" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1097" fromTop="10" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1097" fromTop="6" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="448" fromTop="12" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="379" fromTop="6" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="1599" fromTop="19" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedHttpConfiguration.cs" caret="116" fromTop="4" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="786" fromTop="11" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="1343" fromTop="11" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="978" fromTop="6" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="1833" fromTop="17" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="324" fromTop="13" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedHttpConfiguration.cs" caret="287" fromTop="9" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedFormatter.cs" caret="2041" fromTop="24" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1529" fromTop="17" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1081" fromTop="11" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1132" fromTop="14" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1061" fromTop="8" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1069" fromTop="5" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedVersionFormatter.cs" caret="1314" fromTop="11" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="386" fromTop="8" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

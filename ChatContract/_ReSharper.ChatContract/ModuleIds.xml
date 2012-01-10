@@ -1,0 +1,8 @@
+<Modules>
+  <Module PersistentId="3824C9B7-DF25-4096-A93A-3A92B83FD477" ModuleId="ChatContract" />
+  <Module PersistentId="BFF471A5-6B71-4398-9614-925338198393" ModuleId="ChatServiceClient" />
+  <Module PersistentId="732F67E9-37DF-4652-9746-C96CDA90149C" ModuleId="ChatServiceServer" />
+  <Module PersistentId="4D63DDE2-39C3-40B0-B3D1-C2CA9C509EE9" ModuleId="ChatContract_1" />
+  <Module PersistentId="A53F0164-8CF3-41DE-80AC-EBE87642F099" ModuleId="ChatServiceClient_1" />
+  <Module PersistentId="FC0AE7FD-F038-46B2-9632-24D8DCEC4252" ModuleId="ChatServiceClientMVC" />
+</Modules>

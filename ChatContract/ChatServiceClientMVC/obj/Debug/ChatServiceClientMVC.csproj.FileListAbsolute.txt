@@ -1,0 +1,9 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\bin\ChatServiceClientMVC.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\bin\ChatServiceClientMVC.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\bin\ChatContract.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\bin\EntityFramework.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\bin\ChatContract.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\bin\EntityFramework.xml
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\obj\Debug\ChatServiceClientMVC.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ChatContract\ChatServiceClientMVC\obj\Debug\ChatServiceClientMVC.pdb
