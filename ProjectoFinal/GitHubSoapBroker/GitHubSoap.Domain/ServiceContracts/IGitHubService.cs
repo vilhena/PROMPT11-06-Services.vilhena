@@ -26,5 +26,8 @@ namespace GitHubSoap.Domain.ServiceContracts
 
         [OperationContract]
         IEnumerable<Repository> ListYourRepositories();
+
+        [OperationContract]
+        Repository CreateRepository(RepositoryRequest repositoryRequest);
     }
 }

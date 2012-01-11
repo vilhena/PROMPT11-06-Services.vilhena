@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using GitHubSoap.Domain.DataContracts;
 using GitHubSoap.Domain.DataContracts.Issues;
+using GitHubSoap.Domain.DataContracts.Repos;
 using GitHubSoap.Domain.ServiceContracts;
 
 namespace GitHubSoap.Client
@@ -42,6 +43,21 @@ namespace GitHubSoap.Client
             var myIssues = service.ListYourIssues();
 
             var myRepositories = service.ListYourRepositories();
+
+            var newRepository = new RepositoryRequest()
+                                    {
+                                        name = "First",
+                                        description = "My First",
+                                        homepage = "",
+                                        Private = false,
+                                        has_downloads = true,
+                                        has_issues = true,
+                                        has_wiki = true
+
+                                    };
+
+            var createdRepository = service.CreateRepository(newRepository);
         }
+
     }
 }
