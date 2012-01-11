@@ -57,6 +57,9 @@ namespace GitHubSoap.Client
                                     };
 
             var createdRepository = service.CreateRepository(newRepository);
+
+
+            var repositoryDetail = service.GetRepository("vilhena-services", "First");
         }
 
     }

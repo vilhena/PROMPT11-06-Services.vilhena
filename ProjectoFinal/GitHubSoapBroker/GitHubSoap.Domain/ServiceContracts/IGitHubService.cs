@@ -29,5 +29,17 @@ namespace GitHubSoap.Domain.ServiceContracts
 
         [OperationContract]
         Repository CreateRepository(RepositoryRequest repositoryRequest);
+
+        [OperationContract]
+        RepositoryDetail GetRepository(string user, string repo);
+
+        [OperationContract]
+        RepositoryDetail EditRepository(RepositoryRequest editRepository, string user, string repo);
+
+        [OperationContract]
+        IEnumerable<User> ListRepositoryContributors(string user, string repo);
+
+        [OperationContract]
+        string ListRepositoryLanguages(string user, string repo);
     }
 }
