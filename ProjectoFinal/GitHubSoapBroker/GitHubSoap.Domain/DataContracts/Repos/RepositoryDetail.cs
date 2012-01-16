@@ -132,7 +132,7 @@ namespace GitHubSoap.Domain.DataContracts.Repos
         [DataMember]
         public string language { get; set; }
         [DataMember]
-        public bool Private { get; set; } //TODO:changethis
+        public bool @private { get; set; }
         [DataMember]
         public bool fork { get; set; }
         [DataMember]

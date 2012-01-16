@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubSoap.Broker", "GitHub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubSoap.Client", "GitHubSoap.Client\GitHubSoap.Client.csproj", "{CB4E8404-85EC-4FE6-9453-7C47142907B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubSoap.Client.Forms", "GitHubSoap.Client.Forms\GitHubSoap.Client.Forms.csproj", "{A2B978FE-9BBC-4FED-B049-D55C47A77300}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{CB4E8404-85EC-4FE6-9453-7C47142907B8}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CB4E8404-85EC-4FE6-9453-7C47142907B8}.Release|x86.ActiveCfg = Release|x86
 		{CB4E8404-85EC-4FE6-9453-7C47142907B8}.Release|x86.Build.0 = Release|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Debug|x86.ActiveCfg = Debug|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Debug|x86.Build.0 = Debug|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Release|Any CPU.ActiveCfg = Release|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Release|x86.ActiveCfg = Release|x86
+		{A2B978FE-9BBC-4FED-B049-D55C47A77300}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

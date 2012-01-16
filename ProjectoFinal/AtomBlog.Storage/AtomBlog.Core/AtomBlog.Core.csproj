@@ -83,11 +83,18 @@
     <Compile Include="AtomFeedFormatter.cs" />
     <Compile Include="AtomFeedService.cs" />
     <Compile Include="AtomFeedHttpConfiguration.cs" />
-    <Compile Include="AtomFeedVersionFormatter.cs" />
+    <Compile Include="AtomFeedServiceDocumentFormatter.cs" />
+    <Compile Include="AtomFeedBlogListFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AtomBlog.Domain\AtomBlog.Domain.csproj">
+      <Project>{C64F53E0-392A-4F6D-A662-321BB5002074}</Project>
+      <Name>AtomBlog.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.ServiceModel;
 using System.Text;
 using GitHubSoap.Domain.DataContracts.Issues;
+using GitHubSoap.Domain.FaultContracts;
 
 namespace GitHubSoap.Broker.GitHub
 {
@@ -15,10 +18,9 @@ namespace GitHubSoap.Broker.GitHub
         //GET /repos/:user/:repo/issues
         public IEnumerable<Issue> ListIssuesForRepository(string user, string repo)
         {
-            var response = Client.GetAsync(
-                "https://api.github.com/repos/" + user + "/" + repo + "/issues").Result;
-
-            return response.Content.ReadAsAsync<IEnumerable<Issue>>().Result;
+            var response = Client.Get(
+                string.Format(GitHubUriProvider.ListIssuesForRepository, user, repo));
+            return GetResponse<IEnumerable<Issue>>(response);
         }
 
 
@@ -26,50 +28,31 @@ namespace GitHubSoap.Broker.GitHub
         public Issue CreateIssue(IssueRequest issueRequest, string user, string repo)
         {
             Client.AddAuthentication();
-            var response = Client.PostAsync(
-                "https://api.github.com/repos/" + user + "/" + repo + "/issues"
-                , new ObjectContent<IssueRequest>(issueRequest, "application/json")
-                ).Result;
-
-            return response.Content.ReadAsAsync<Issue>().Result;
+            var response = Client.Post(string.Format(GitHubUriProvider.CreateIssue, user, repo), issueRequest);
+            return GetResponse<Issue>(response);
         }
 
         //PATCH /repos/:user/:repo/issues/:id
         public Issue EditIssue(IssueRequest editIssue, string user, string repo, int id)
         {
             Client.AddAuthentication();
-
-            //var response = Client.
-            var request = new HttpRequestMessage<IssueRequest>(editIssue
-                                                               , new HttpMethod("PATCH")
-                                                               ,
-                                                               new Uri("https://api.github.com/repos/" + user + "/" +
-                                                                       repo + "/issues/" + id)
-                                                               ,
-                                                               new List<MediaTypeFormatter> { new JsonMediaTypeFormatter() });
-
-            var response = Client.SendAsync(request).Result;
-
-            return response.Content.ReadAsAsync<Issue>().Result;
+            var response = Client.Patch(string.Format(GitHubUriProvider.EditIssue, user, repo, id), editIssue);
+            return GetResponse<Issue>(response);
         }
 
         //GET /repos/:user/:repo/issues/:number
         public Issue GetSingleIssue(string user, string repo, int id)
         {
-            var response = Client.GetAsync(
-                "https://api.github.com/repos/" + user + "/" + repo + "/issues/" + id).Result;
-
-            return response.Content.ReadAsAsync<Issue>().Result;
+            var response = Client.Get(string.Format(GitHubUriProvider.GetSingleIssue, user, repo, id));
+            return GetResponse<Issue>(response);
         }
 
         //GET /issues
         public IEnumerable<Issue> ListYourIssues()
         {
             Client.AddAuthentication();
-            var response = Client.GetAsync(
-                "https://api.github.com/issues").Result;
-
-            return response.Content.ReadAsAsync<IEnumerable<Issue>>().Result;
+            var response = Client.Get(GitHubUriProvider.ListYourIssues);
+            return GetResponse<IEnumerable<Issue>>(response);
         }
 
         #endregion

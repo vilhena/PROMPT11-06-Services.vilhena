@@ -2,4 +2,6 @@
   <Module PersistentId="E803C91E-8502-4764-A220-D2E9410C3DF6" ModuleId="AtomBlog.Storage" />
   <Module PersistentId="950C3C10-75BF-4926-987D-F8D8F9B2C238" ModuleId="AtomBlog.Core" />
   <Module PersistentId="0936B1E0-775D-425E-AE82-CDFE1A58CD8C" ModuleId="AtomBlog.UI" />
+  <Module PersistentId="C64F53E0-392A-4F6D-A662-321BB5002074" ModuleId="AtomBlog.Domain" />
+  <Module PersistentId="793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4" ModuleId="AtomBlog.DocumentRepository.RavenDB" />
 </Modules>

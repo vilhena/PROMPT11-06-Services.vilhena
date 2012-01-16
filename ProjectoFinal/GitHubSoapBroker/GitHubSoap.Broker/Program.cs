@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.ServiceModel;
@@ -14,7 +15,11 @@ namespace GitHubSoap.Broker
     {
         static void Main(string[] args)
         {
-            var client = new GitHubHttpClient(new GitHubIdentity("vilhena-services","prompt11"));
+            var client = new GitHubHttpClient(
+                new GitHubIdentity(
+                    ConfigurationManager.AppSettings["GitHubUser"]
+                    , ConfigurationManager.AppSettings["GitHubPassword"])
+                );
 
             var service = new GitHubService(client);
 

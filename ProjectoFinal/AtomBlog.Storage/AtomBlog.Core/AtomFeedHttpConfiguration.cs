@@ -7,7 +7,7 @@ namespace AtomBlog.Core
         public AtomFeedHttpConfiguration()
         {
             Formatters.Clear();
-            Formatters.Add(new AtomFeedVersionFormatter());
+            Formatters.Add(new AtomFeedServiceDocumentFormatter());
             Formatters.Add(new AtomFeedFormatter());
         }
     }

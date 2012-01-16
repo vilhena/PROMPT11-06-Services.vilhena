@@ -1,0 +1,11 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\bin\Debug\GitHubSoap.Client.Forms.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\bin\Debug\GitHubSoap.Client.Forms.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\GitHubSoap.Client.Forms.GitHubClient.resources
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\GitHubSoap.Client.Forms.Properties.Resources.resources
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\GitHubSoap.Client.Forms.exe
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\obj\x86\Debug\GitHubSoap.Client.Forms.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\bin\Debug\GitHubSoap.Domain.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\GitHubSoapBroker\GitHubSoap.Client.Forms\bin\Debug\GitHubSoap.Domain.pdb

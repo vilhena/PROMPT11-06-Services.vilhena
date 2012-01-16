@@ -11,9 +11,9 @@ using System.Xml;
 
 namespace AtomBlog.Core
 {
-    public class AtomFeedVersionFormatter : MediaTypeFormatter
+    public class AtomFeedBlogListFormatter : MediaTypeFormatter
     {
-        public AtomFeedVersionFormatter()
+        public AtomFeedBlogListFormatter()
         {
             this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/atom+xml"));
         }
@@ -27,16 +27,16 @@ namespace AtomBlog.Core
         {
             var version = value as string;
             
-            if (version != null)
-            {
-                var syndicationFeed =
-                    new SyndicationFeed("Application Version " + version,"", new Uri("http://localhost"));
+            //if (version != null)
+            //{
+            //    var syndicationFeed =
+            //        new SyndicationFeed("Application Version " + version,"", new Uri("http://localhost"));
                 
-                using (var xmlWriter = XmlWriter.Create(stream))
-                {
-                    syndicationFeed.SaveAsAtom10(xmlWriter); 
-                }
-            }
+            //    using (var xmlWriter = XmlWriter.Create(stream))
+            //    {
+            //        syndicationFeed.SaveAsAtom10(xmlWriter); 
+            //    }
+            //}
         }
 
         protected override bool CanReadType(Type type)

@@ -45,6 +45,7 @@
       <HintPath>..\packages\JsonValue.0.6.0\lib\40\Microsoft.Server.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http">
       <HintPath>..\packages\HttpClient.0.6.0\lib\40\System.Net.Http.dll</HintPath>
@@ -60,9 +61,11 @@
   <ItemGroup>
     <Compile Include="GitHub\GitHubHttpClient.cs" />
     <Compile Include="GitHub\GitHubIdentity.cs" />
+    <Compile Include="GitHub\GitHubService.Batch.cs" />
     <Compile Include="GitHub\GitHubService.cs" />
     <Compile Include="GitHub\GitHubService.Issues.cs" />
     <Compile Include="GitHub\GitHubService.Repos.cs" />
+    <Compile Include="GitHub\GitHubUriProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

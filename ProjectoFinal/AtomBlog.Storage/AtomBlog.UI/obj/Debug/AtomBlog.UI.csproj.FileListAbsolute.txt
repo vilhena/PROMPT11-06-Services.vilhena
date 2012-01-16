@@ -24,3 +24,5 @@ C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\
 C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.UI\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.UI\obj\Debug\AtomBlog.UI.dll
 C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.UI\obj\Debug\AtomBlog.UI.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.UI\bin\AtomBlog.Domain.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.UI\bin\AtomBlog.Domain.pdb

@@ -65,8 +65,8 @@ namespace GitHubSoap.Domain.DataContracts.Repos
         public string homepage { get; set; }
         [DataMember]
         public string language { get; set; }
-        //[DataMember]
-        //public bool private { get; set; }
+        [DataMember]
+        public bool @private { get; set; }
         [DataMember]
         public bool fork { get; set; }
         [DataMember]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
@@ -17,32 +18,24 @@ namespace GitHubSoap.Broker.GitHub
         public IEnumerable<Repository> ListYourRepositories()
         {
             Client.AddAuthentication();
-            var response = Client.GetAsync(
-                "https://api.github.com/user/repos").Result;
+            var response = Client.Get(GitHubUriProvider.ListYourRepositories);
 
-            return response.Content.ReadAsAsync<IEnumerable<Repository>>().Result;
+            return GetResponse<IEnumerable<Repository>>(response);
         }
 
         //POST /user/repos
         public Repository CreateRepository(RepositoryRequest repositoryRequest)
         {
             Client.AddAuthentication();
-            var response = Client.PostAsync(
-                "https://api.github.com/user/repos"
-                , new ObjectContent<RepositoryRequest>(repositoryRequest, "application/json")).Result;
-
-            return response.Content.ReadAsAsync<Repository>().Result;
+            var response = Client.Post(GitHubUriProvider.CreateRepository, repositoryRequest);
+            return GetResponse<Repository>(response);
         }
 
         //GET /repos/:user/:repo
         public RepositoryDetail GetRepository(string user, string repo)
         {
-            //Client.AddAuthentication();
-            var response = Client.GetAsync(
-                "https://api.github.com/repos/" + user + "/" + repo
-                ).Result;
-
-            return response.Content.ReadAsAsync<RepositoryDetail>().Result;
+            var response = Client.Get(string.Format(GitHubUriProvider.GetRepository, user, repo));
+            return GetResponse<RepositoryDetail>(response);
         }
 
 
@@ -50,29 +43,16 @@ namespace GitHubSoap.Broker.GitHub
         public RepositoryDetail EditRepository(RepositoryRequest editRepository, string user, string repo)
         {
             Client.AddAuthentication();
-
-            //var response = Client.
-            var request = new HttpRequestMessage<RepositoryRequest>(editRepository
-                                                               , new HttpMethod("PATCH")
-                                                               ,
-                                                               new Uri("https://api.github.com/repos/" + user + "/" +
-                                                                       repo)
-                                                               ,
-                                                               new List<MediaTypeFormatter> { new JsonMediaTypeFormatter() });
-
-            var response = Client.SendAsync(request).Result;
-
-            return response.Content.ReadAsAsync<RepositoryDetail>().Result;
+            var response = Client.Patch(string.Format(GitHubUriProvider.EditRepository, user, repo), editRepository);
+            return GetResponse<RepositoryDetail>(response);
         }
 
         //GET /repos/:user/:repo/contributors
 
         public IEnumerable<User> ListRepositoryContributors(string user,string repo)
         {
-            var response = Client.GetAsync(
-                "https://api.github.com/repos/" + user + "/" + repo + "/contributors").Result;
-
-            return response.Content.ReadAsAsync<IEnumerable<User>>().Result; 
+            var response = Client.Get(string.Format(GitHubUriProvider.ListRepositoryContributors, user, repo));
+            return GetResponse<IEnumerable<User>>(response); 
         }
 
 
@@ -80,10 +60,8 @@ namespace GitHubSoap.Broker.GitHub
 
         public string ListRepositoryLanguages(string user, string repo)
         {
-            var response = Client.GetAsync(
-                "https://api.github.com/repos/" + user + "/" + repo + "/languages").Result;
-
-            return response.Content.ReadAsStringAsync().Result;
+            var response = Client.Get(string.Format(GitHubUriProvider.ListRepositoryLanguages, user, repo));
+            return GetResponse<string>(response);
         }
 
         #endregion

@@ -1,0 +1,5 @@
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.Domain\bin\Debug\AtomBlog.Domain.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.Domain\bin\Debug\AtomBlog.Domain.pdb
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.Domain\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.Domain\obj\Debug\AtomBlog.Domain.dll
+C:\Users\gnvilhena\PROMPT\uc02\repos\PROMPT11-06-Services.vilhena\ProjectoFinal\AtomBlog.Storage\AtomBlog.Domain\obj\Debug\AtomBlog.Domain.pdb
