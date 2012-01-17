@@ -80,12 +80,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AtomFeedFormatter.cs" />
     <Compile Include="AtomFeedService.cs" />
     <Compile Include="AtomFeedHttpConfiguration.cs" />
-    <Compile Include="AtomFeedServiceDocumentFormatter.cs" />
-    <Compile Include="AtomFeedBlogListFormatter.cs" />
+    <Compile Include="MediaFormatters\AtomFeedServiceDocumentFormatter.cs" />
+    <Compile Include="MediaFormatters\AtomFeedBlogListFormatter.cs" />
+    <Compile Include="MediaFormatters\AtomFeedPostFormatter.cs" />
+    <Compile Include="MediaFormatters\AtomFeedBlogFormatter.cs" />
+    <Compile Include="MediaFormatters\AtomFeedPostListFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BlogAtomConverter.cs" />
+    <Compile Include="Utils\PostAtomConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

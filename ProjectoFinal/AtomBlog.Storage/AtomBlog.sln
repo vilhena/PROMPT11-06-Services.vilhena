@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtomBlog.Domain", "AtomBlog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtomBlog.DocumentRepository.RavenDB", "AtomBlog.DocumentRepository.RavenDB\AtomBlog.DocumentRepository.RavenDB.csproj", "{793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtomBlog.BlogServices", "AtomBlog.BlogServices\AtomBlog.BlogServices.csproj", "{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,16 @@ Global
 		{793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4}.Release|x86.ActiveCfg = Release|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

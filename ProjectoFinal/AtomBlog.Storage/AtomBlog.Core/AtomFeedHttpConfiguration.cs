@@ -1,4 +1,5 @@
-﻿using Microsoft.ApplicationServer.Http;
+﻿using AtomBlog.Core.MediaFormatters;
+using Microsoft.ApplicationServer.Http;
 
 namespace AtomBlog.Core
 {
@@ -8,7 +9,10 @@ namespace AtomBlog.Core
         {
             Formatters.Clear();
             Formatters.Add(new AtomFeedServiceDocumentFormatter());
-            Formatters.Add(new AtomFeedFormatter());
+            Formatters.Add(new AtomPostFeedFormatter());
+            Formatters.Add(new AtomPostListFeedFormatter());
+            Formatters.Add(new AtomFeedBlogFormatter());
+            Formatters.Add(new AtomFeedBlogListFormatter());
         }
     }
 }

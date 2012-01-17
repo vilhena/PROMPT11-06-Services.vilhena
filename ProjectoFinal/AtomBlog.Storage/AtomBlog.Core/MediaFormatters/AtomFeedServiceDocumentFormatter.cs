@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.ServiceModel.Syndication;
-using System.Text;
 using System.Xml;
 
-namespace AtomBlog.Core
+namespace AtomBlog.Core.MediaFormatters
 {
     public class AtomFeedServiceDocumentFormatter : MediaTypeFormatter
     {
         public AtomFeedServiceDocumentFormatter()
         {
-            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/atom+xml"));
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/atomsvc+xml"));
         }
 
         protected override object OnReadFromStream(Type type, Stream stream, HttpContentHeaders contentHeaders)
@@ -26,12 +23,13 @@ namespace AtomBlog.Core
         protected override void OnWriteToStream(Type type, object value, Stream stream, HttpContentHeaders contentHeaders, TransportContext context)
         {
             var document = value as ServiceDocument;
+            contentHeaders.ContentType = new MediaTypeHeaderValue("application/atomsvc+xml");
 
             if (document != null)
             {
                 using (var xmlWriter = XmlWriter.Create(stream))
                 {
-                    document.Save(xmlWriter);
+                    document.GetFormatter().WriteTo(xmlWriter);
                 }
             }
         }

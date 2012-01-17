@@ -12,7 +12,7 @@ namespace AtomBlog.Domain.AtomDomainModel
         public Blog Blog { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime LastUpdated { get; set; }
-        public DateTime PublishDate { get; set; }
+        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset PublishDate { get; set; }
     }
 }

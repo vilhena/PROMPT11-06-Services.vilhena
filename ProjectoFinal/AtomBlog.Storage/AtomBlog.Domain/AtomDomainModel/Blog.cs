@@ -10,7 +10,8 @@ namespace AtomBlog.Domain.AtomDomainModel
         public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime Updated { get; set; }
+        public DateTimeOffset PublishDate { get; set; }
+        public DateTimeOffset LastUpdatedTime { get; set; }
         public IEnumerable<Post> Posts { get; set; }
     }
 }
