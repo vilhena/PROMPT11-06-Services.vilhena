@@ -20,14 +20,10 @@ namespace GitHubSoap.Client
 
             var service = client.CreateChannel();
 
-            //var issues = service.ListIssuesForRepository("NancyFx", "Nancy");
 
             var issueRequest = new IssueRequest
                                    {
-                                       //assignee = "vilhena",
                                        body = "test body",
-                                       //labels = new string[]{"label1","label2"},
-                                       //milestone = 1,
                                        title = "My first Issue"
                                    };
             var newIssue = service.CreateIssue(issueRequest, "vilhena-services", "fillwithstuff");
@@ -46,10 +42,10 @@ namespace GitHubSoap.Client
 
             var newRepository = new RepositoryRequest()
                                     {
-                                        name = "First",
+                                        name = "First" + (new Random()).Next(1000),
                                         description = "My First",
                                         homepage = "",
-                                        Private = false,
+                                        @private = false,
                                         has_downloads = true,
                                         has_issues = true,
                                         has_wiki = true

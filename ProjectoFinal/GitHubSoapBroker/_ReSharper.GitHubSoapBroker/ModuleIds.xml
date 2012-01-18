@@ -3,4 +3,5 @@
   <Module PersistentId="AE19EDD8-008F-4659-95BF-FEC2BAF69326" ModuleId="GitHubSoap.Domain" />
   <Module PersistentId="CB4E8404-85EC-4FE6-9453-7C47142907B8" ModuleId="GitHubSoap.Client" />
   <Module PersistentId="A2B978FE-9BBC-4FED-B049-D55C47A77300" ModuleId="GitHubSoap.Client.Forms" />
+  <Module PersistentId="C636C8E2-CFD8-45B4-96E5-799FF19CDB2D" ModuleId="GitHubSoap.Host" />
 </Modules>

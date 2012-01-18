@@ -29,7 +29,7 @@ namespace GitHubSoap.Domain.DataContracts.Repos
         [DataMember]
         public string homepage { get; set; }
         [DataMember]
-        public bool Private { get; set; } //TODO: resolve this
+        public bool @private { get; set; } 
         [DataMember]
         public bool has_issues { get; set; }
         [DataMember]

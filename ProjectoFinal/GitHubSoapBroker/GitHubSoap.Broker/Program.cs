@@ -34,6 +34,10 @@ namespace GitHubSoap.Broker
                                                    HttpGetEnabled = true,
                                                    HttpGetUrl = new Uri("http://localhost/github/wsdl")
                                                });
+            host.Description.Behaviors.Add(new ServiceThrottlingBehavior()
+                                               {
+                                                   MaxConcurrentCalls = 1
+                                               });
 
 
             host.Open();
