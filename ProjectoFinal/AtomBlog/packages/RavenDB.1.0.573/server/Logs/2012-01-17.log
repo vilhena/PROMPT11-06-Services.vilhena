@@ -1,0 +1,1604 @@
+time;logger;level;message;exception
+2012-01-17 21:35:43.2724;Raven.Database.Impl.DocumentCacher;Info;"MemoryCache Settings:
+  PhysicalMemoryLimit = 98
+  CacheMemoryLimit    = 401604608
+  PollingInterval     = 00:02:00";
+2012-01-17 21:35:43.3095;Raven.Storage.Esent.TransactionalStorage;Info;"Esent Settings:
+  MaxVerPages      = 32768
+  CacheSizeMax     = 65536
+  DatabasePageSize = 4096";
+2012-01-17 21:35:46.6884;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index AlbumsByCountSold:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_AlbumsByCountSold : AbstractViewGenerator
+{
+	public Index_AlbumsByCountSold()
+	{
+		this.ViewText = @""from album in docs.Albums
+select new { album.CountSold };
+"";
+		this.ForEntityNames.Add(""Albums"");
+		this.AddMapDefinition(docs => from album in docs
+			where album[""@metadata""][""Raven-Entity-Name""] == ""Albums""
+			select new { album.CountSold, __document_id = album.__document_id });
+		this.AddField(""__document_id"");
+		this.AddField(""CountSold"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForMap(""CountSold"");
+		this.AddQueryParameterForReduce(""__document_id"");
+		this.AddQueryParameterForReduce(""CountSold"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_AlbumsByCountSold : AbstractViewGenerator
+{
+	public Index_AlbumsByCountSold()
+	{
+		this.ViewText = @""from album in docs.Albums
+select new { album.CountSold };
+"";
+		this.ForEntityNames.Add(""Albums"");
+		this.AddMapDefinition(docs => from album in docs
+			where album[""@metadata""][""Raven-Entity-Name""] == ""Albums""
+			select new { album.CountSold, __document_id = album.__document_id });
+		this.AddField(""__document_id"");
+		this.AddField(""CountSold"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForMap(""CountSold"");
+		this.AddQueryParameterForReduce(""__document_id"");
+		this.AddQueryParameterForReduce(""CountSold"");
+	}
+}
+";
+2012-01-17 21:35:46.8710;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index AlbumsByGenre:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_AlbumsByGenre : AbstractViewGenerator
+{
+	public Index_AlbumsByGenre()
+	{
+		this.ViewText = @""from album in docs.Albums
+where album.Genre != null
+select new { Genre = album.Genre.Id }
+"";
+		this.ForEntityNames.Add(""Albums"");
+		this.AddMapDefinition(docs => from album in docs
+			where album[""@metadata""][""Raven-Entity-Name""] == ""Albums""
+			where album.Genre != null
+			select new { Genre = album.Genre.Id, __document_id = album.__document_id });
+		this.AddField(""Genre"");
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""Genre.Id"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""Genre.Id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_AlbumsByGenre : AbstractViewGenerator
+{
+	public Index_AlbumsByGenre()
+	{
+		this.ViewText = @""from album in docs.Albums
+where album.Genre != null
+select new { Genre = album.Genre.Id }
+"";
+		this.ForEntityNames.Add(""Albums"");
+		this.AddMapDefinition(docs => from album in docs
+			where album[""@metadata""][""Raven-Entity-Name""] == ""Albums""
+			where album.Genre != null
+			select new { Genre = album.Genre.Id, __document_id = album.__document_id });
+		this.AddField(""Genre"");
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""Genre.Id"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""Genre.Id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+";
+2012-01-17 21:35:47.0546;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index Artists:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Artists : AbstractViewGenerator
+{
+	public Index_Artists()
+	{
+		this.ViewText = @""from album in docs.Albums
+select new { album.Artist.Id, album.Artist.Name }
+from artist in results
+group artist by new { artist.Id, artist.Name } into g
+select new { g.Key.Id, g.Key.Name }
+
+"";
+		this.ForEntityNames.Add(""Albums"");
+		this.AddMapDefinition(docs => from album in docs
+			where album[""@metadata""][""Raven-Entity-Name""] == ""Albums""
+			select new { album.Artist.Id, album.Artist.Name, __document_id = album.__document_id });
+		this.ReduceDefinition = results => from artist in results
+			group artist by new { artist.Id, artist.Name } into g
+			select new { g.Key.Id, g.Key.Name };
+		this.GroupByExtraction = artist => new { artist.Id, artist.Name };
+		this.AddField(""Id"");
+		this.AddField(""Name"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForMap(""Artist.Id"");
+		this.AddQueryParameterForMap(""Artist.Name"");
+		this.AddQueryParameterForReduce(""__document_id"");
+		this.AddQueryParameterForReduce(""Artist.Id"");
+		this.AddQueryParameterForReduce(""Artist.Name"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Artists : AbstractViewGenerator
+{
+	public Index_Artists()
+	{
+		this.ViewText = @""from album in docs.Albums
+select new { album.Artist.Id, album.Artist.Name }
+from artist in results
+group artist by new { artist.Id, artist.Name } into g
+select new { g.Key.Id, g.Key.Name }
+
+"";
+		this.ForEntityNames.Add(""Albums"");
+		this.AddMapDefinition(docs => from album in docs
+			where album[""@metadata""][""Raven-Entity-Name""] == ""Albums""
+			select new { album.Artist.Id, album.Artist.Name, __document_id = album.__document_id });
+		this.ReduceDefinition = results => from artist in results
+			group artist by new { artist.Id, artist.Name } into g
+			select new { g.Key.Id, g.Key.Name };
+		this.GroupByExtraction = artist => new { artist.Id, artist.Name };
+		this.AddField(""Id"");
+		this.AddField(""Name"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForMap(""Artist.Id"");
+		this.AddQueryParameterForMap(""Artist.Name"");
+		this.AddQueryParameterForReduce(""__document_id"");
+		this.AddQueryParameterForReduce(""Artist.Id"");
+		this.AddQueryParameterForReduce(""Artist.Name"");
+	}
+}
+";
+2012-01-17 21:35:47.2509;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index Raven%2fDocumentsByEntityName:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Raven_2fDocumentsByEntityName : AbstractViewGenerator
+{
+	public Index_Raven_2fDocumentsByEntityName()
+	{
+		this.ViewText = @""from doc in docs 
+let Tag = doc[""""@metadata""""][""""Raven-Entity-Name""""]
+where  Tag != null 
+select new { Tag, LastModified = (DateTime)doc[""""@metadata""""][""""Last-Modified""""] };
+"";
+		this.AddMapDefinition(docs => from doc in docs
+			let Tag = doc[""@metadata""][""Raven-Entity-Name""]
+			where Tag != null
+			select new { Tag, LastModified = (DateTime)doc[""@metadata""][""Last-Modified""], __document_id = doc.__document_id });
+		this.AddField(""LastModified"");
+		this.AddField(""__document_id"");
+		this.AddField(""Tag"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Raven_2fDocumentsByEntityName : AbstractViewGenerator
+{
+	public Index_Raven_2fDocumentsByEntityName()
+	{
+		this.ViewText = @""from doc in docs 
+let Tag = doc[""""@metadata""""][""""Raven-Entity-Name""""]
+where  Tag != null 
+select new { Tag, LastModified = (DateTime)doc[""""@metadata""""][""""Last-Modified""""] };
+"";
+		this.AddMapDefinition(docs => from doc in docs
+			let Tag = doc[""@metadata""][""Raven-Entity-Name""]
+			where Tag != null
+			select new { Tag, LastModified = (DateTime)doc[""@metadata""][""Last-Modified""], __document_id = doc.__document_id });
+		this.AddField(""LastModified"");
+		this.AddField(""__document_id"");
+		this.AddField(""Tag"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+";
+2012-01-17 21:35:47.4394;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index SoldAlbums:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_SoldAlbums : AbstractViewGenerator
+{
+	public Index_SoldAlbums()
+	{
+		this.ViewText = @""from order in docs.Orders
+from line in order.Lines
+select new{ line.Album, line.Quantity }
+
+from result in results
+group result by result.Album into g
+select new{ Album = g.Key, Quantity = g.Sum(x=>x.Quantity) }
+
+
+"";
+		this.ForEntityNames.Add(""Orders"");
+		this.AddMapDefinition(docs => from order in docs
+			where order[""@metadata""][""Raven-Entity-Name""] == ""Orders""
+			from line in order.Lines
+			select new { line.Album, line.Quantity, __document_id = order.__document_id });
+		this.ReduceDefinition = results => from result in results
+			group result by result.Album into g
+			select new { Album = g.Key, Quantity = g.Sum(x => x.Quantity) };
+		this.GroupByExtraction = result => result.Album;
+		this.AddField(""Album"");
+		this.AddField(""Quantity"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForMap(""Lines,Album"");
+		this.AddQueryParameterForMap(""Lines,Quantity"");
+		this.AddQueryParameterForReduce(""__document_id"");
+		this.AddQueryParameterForReduce(""Lines,Album"");
+		this.AddQueryParameterForReduce(""Lines,Quantity"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_SoldAlbums : AbstractViewGenerator
+{
+	public Index_SoldAlbums()
+	{
+		this.ViewText = @""from order in docs.Orders
+from line in order.Lines
+select new{ line.Album, line.Quantity }
+
+from result in results
+group result by result.Album into g
+select new{ Album = g.Key, Quantity = g.Sum(x=>x.Quantity) }
+
+
+"";
+		this.ForEntityNames.Add(""Orders"");
+		this.AddMapDefinition(docs => from order in docs
+			where order[""@metadata""][""Raven-Entity-Name""] == ""Orders""
+			from line in order.Lines
+			select new { line.Album, line.Quantity, __document_id = order.__document_id });
+		this.ReduceDefinition = results => from result in results
+			group result by result.Album into g
+			select new { Album = g.Key, Quantity = g.Sum(x => x.Quantity) };
+		this.GroupByExtraction = result => result.Album;
+		this.AddField(""Album"");
+		this.AddField(""Quantity"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForMap(""Lines,Album"");
+		this.AddQueryParameterForMap(""Lines,Quantity"");
+		this.AddQueryParameterForReduce(""__document_id"");
+		this.AddQueryParameterForReduce(""Lines,Album"");
+		this.AddQueryParameterForReduce(""Lines,Quantity"");
+	}
+}
+";
+2012-01-17 21:35:47.4394;Raven.Database.Indexing.IndexStorage;Debug;Loading saved index AlbumsByCountSold;
+2012-01-17 21:35:47.4843;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for AlbumsByCountSold;
+2012-01-17 21:35:47.5253;Raven.Database.Indexing.IndexStorage;Debug;Loading saved index AlbumsByGenre;
+2012-01-17 21:35:47.5253;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for AlbumsByGenre;
+2012-01-17 21:35:47.5312;Raven.Database.Indexing.IndexStorage;Debug;Loading saved index Artists;
+2012-01-17 21:35:47.5312;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for Artists;
+2012-01-17 21:35:47.5312;Raven.Database.Indexing.IndexStorage;Debug;Loading saved index Raven/DocumentsByEntityName;
+2012-01-17 21:35:47.5312;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for Raven/DocumentsByEntityName;
+2012-01-17 21:35:47.5312;Raven.Database.Indexing.IndexStorage;Debug;Loading saved index SoldAlbums;
+2012-01-17 21:35:47.5312;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for SoldAlbums;
+2012-01-17 21:35:47.6152;Raven.Database.DocumentDatabase;Debug;Delete a document with key: Raven/Backup/Status and etag ;
+2012-01-17 21:35:47.6347;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Backup/Status' was not found, and considered deleted;
+2012-01-17 21:35:47.6347;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 1 - step 1/2;
+2012-01-17 21:35:47.6347;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 2 - step 2/2;
+2012-01-17 21:35:47.6875;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 21:35:47.7363;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 21:35:47.7363;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 21:35:47.7363;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 21:45:47.6875;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 21:55:47.6875;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 22:05:47.6875;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 22:15:47.6875;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 2, currentWorkCounter: 2, will wait for additional work;
+2012-01-17 22:21:27.0361;Raven.Database.Server.HttpServer;Debug;Request #   1: GET     -    24 ms - <default>  - 200 - /docs?pageSize=0&noCache=-1135797027;
+2012-01-17 22:21:27.5234;Raven.Database.Server.HttpServer;Debug;Request #   2: GET     -     0 ms - <default>  - 200 - /docs?pageSize=0&noCache=-1399291118;
+2012-01-17 22:21:27.5576;Raven.Database.Server.HttpServer;Debug;Request #   3: GET     -     2 ms - <default>  - 200 - /docs?pageSize=0&noCache=-1200125713;
+2012-01-17 22:21:27.5625;Raven.Database.Server.HttpServer;Debug;Request #   4: GET     -    47 ms - <default>  - 200 - /build/version?noCache=-1639061392;
+2012-01-17 22:21:27.5771;Raven.Database.Server.HttpServer;Debug;Request #   5: GET     -     4 ms - <default>  - 200 - /license/status?noCache=452200409;
+2012-01-17 22:21:27.6933;Raven.Database.Server.HttpServer;Debug;Request #   6: GET     -    50 ms - <default>  - 200 - /docs/?start=0&pageSize=15&noCache=54324632;
+2012-01-17 22:21:27.7031;Raven.Database.Server.HttpServer;Debug;Request #   7: GET     -    80 ms - <default>  - 200 - /docs/?start=0&pageSize=15&noCache=2043426421;
+2012-01-17 22:21:27.8320;Raven.Database.Server.HttpServer;Debug;Request #   8: GET     -   120 ms - <default>  - 200 - /stats?noCache=-315667256;
+2012-01-17 22:21:33.5595;Raven.Database.Server.HttpServer;Debug;Request #   9: GET     -    32 ms - <default>  - 200 - /stats?noCache=-230790994;
+2012-01-17 22:21:41.7207;Raven.Database.Server.HttpServer;Debug;Request #  10: GET     -    40 ms - <default>  - 200 - /terms/Raven/DocumentsByEntityName?field=Tag&fromValue=&pageSize=100&noCache=-625906258;
+2012-01-17 22:21:41.9599;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Albums;
+2012-01-17 22:21:42.0595;Raven.Database.Server.HttpServer;Debug;Request #  11: GET     -   126 ms - <default>  - 0 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AAlbums&start=0&pageSize=0&aggregation=None;
+2012-01-17 22:21:42.0625;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Genres;
+2012-01-17 22:21:42.0625;Raven.Database.Server.HttpServer;Debug;Request #  12: GET     -     1 ms - <default>  - 0 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AGenres&start=0&pageSize=0&aggregation=None;
+2012-01-17 22:21:42.0625;Raven.Database.Server.HttpServer;Debug;Request #  13: POST    -   162 ms - <default>  - 200 - /multi_get/;
+2012-01-17 22:21:42.2509;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Albums;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/387' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/388' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/389' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/392' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/394' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/395' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/396' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/397' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/398' was found;
+2012-01-17 22:21:42.3017;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/399' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/400' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/401' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/402' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/403' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/404' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/405' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/406' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/407' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/408' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/409' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/410' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/411' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/412' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/413' was found;
+2012-01-17 22:21:42.3115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/414' was found;
+2012-01-17 22:21:42.3417;Raven.Database.Server.HttpServer;Debug;Request #  14: GET     -    91 ms - <default>  - 200 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AAlbums&start=0&pageSize=25&aggregation=None&noCache=-624759328;
+2012-01-17 22:21:42.6806;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Albums;
+2012-01-17 22:21:42.6806;Raven.Database.Server.HttpServer;Debug;Request #  15: GET     -     2 ms - <default>  - 0 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AAlbums&start=0&pageSize=0&aggregation=None;
+2012-01-17 22:21:42.6806;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Genres;
+2012-01-17 22:21:42.6806;Raven.Database.Server.HttpServer;Debug;Request #  16: GET     -     1 ms - <default>  - 0 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AGenres&start=0&pageSize=0&aggregation=None;
+2012-01-17 22:21:42.6806;Raven.Database.Server.HttpServer;Debug;Request #  17: POST    -     6 ms - <default>  - 200 - /multi_get/;
+2012-01-17 22:21:42.8232;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Albums;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/387' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/388' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/389' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/392' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/394' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/395' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/396' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/397' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/398' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/399' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/400' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/401' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/402' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/403' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/404' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/405' was found;
+2012-01-17 22:21:42.8232;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/406' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/407' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/408' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/409' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/410' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/411' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/412' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/413' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/414' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/415' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/416' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/418' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/419' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/420' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/421' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/422' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/423' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/424' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/425' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/426' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/427' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/428' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/429' was found;
+2012-01-17 22:21:42.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'albums/430' was found;
+2012-01-17 22:21:47.8291;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Albums;
+2012-01-17 22:21:47.8291;Raven.Database.Server.HttpServer;Debug;Request #  18: GET     -     1 ms - <default>  - 0 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AAlbums&start=0&pageSize=0&aggregation=None;
+2012-01-17 22:21:47.8291;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Raven/DocumentsByEntityName for: Tag:Genres;
+2012-01-17 22:21:47.8291;Raven.Database.Server.HttpServer;Debug;Request #  19: GET     -     1 ms - <default>  - 0 - /indexes/Raven/DocumentsByEntityName?query=Tag%253AGenres&start=0&pageSize=0&aggregation=None;
+2012-01-17 22:21:47.8291;Raven.Database.Server.HttpServer;Debug;Request #  20: POST    -     6 ms - <default>  - 200 - /multi_get/;
+2012-01-17 22:21:57.7333;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:21:57.7333;Raven.Database.Server.HttpServer;Debug;Request #  21: GET     -     7 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:21:58.1494;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index Temp%2fBlogs:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Temp_2fBlogs : AbstractViewGenerator
+{
+	public Index_Temp_2fBlogs()
+	{
+		this.ViewText = @""from doc in docs.Blogs
+select new {  }
+"";
+		this.ForEntityNames.Add(""Blogs"");
+		this.AddMapDefinition(docs => from doc in docs
+			where doc[""@metadata""][""Raven-Entity-Name""] == ""Blogs""
+			select new { __document_id = doc.__document_id });
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Temp_2fBlogs : AbstractViewGenerator
+{
+	public Index_Temp_2fBlogs()
+	{
+		this.ViewText = @""from doc in docs.Blogs
+select new {  }
+"";
+		this.ForEntityNames.Add(""Blogs"");
+		this.AddMapDefinition(docs => from doc in docs
+			where doc[""@metadata""][""Raven-Entity-Name""] == ""Blogs""
+			select new { __document_id = doc.__document_id });
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+";
+2012-01-17 22:21:58.1640;Raven.Database.Indexing.IndexStorage;Info;Creating index Temp/Blogs with encoded name Temp/Blogs;
+2012-01-17 22:21:58.2392;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for Temp/Blogs;
+2012-01-17 22:21:58.2578;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 3 - step 1/2;
+2012-01-17 22:21:58.2578;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 4 - step 2/2;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 4, currentWorkCounter: 4, will wait for additional work;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 4, currentWorkCounter: 4, will wait for additional work;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 4, currentWorkCounter: 4, will wait for additional work;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 5 - step 1/2;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 6 - step 2/2;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 6, currentWorkCounter: 6, will wait for additional work;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 6, currentWorkCounter: 6, will wait for additional work;
+2012-01-17 22:21:58.2675;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 6, currentWorkCounter: 6, will wait for additional work;
+2012-01-17 22:21:58.3505;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 7 - step 1/2;
+2012-01-17 22:21:58.3505;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 8 - step 2/2;
+2012-01-17 22:21:58.3505;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 8, currentWorkCounter: 8, will wait for additional work;
+2012-01-17 22:21:58.3505;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 8, currentWorkCounter: 8, will wait for additional work;
+2012-01-17 22:21:58.3505;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 8, currentWorkCounter: 8, will wait for additional work;
+2012-01-17 22:21:58.3505;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 8, currentWorkCounter: 8, will wait for additional work;
+2012-01-17 22:21:58.3759;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:21:58.3759;Raven.Database.Server.HttpServer;Debug;Request #  22: GET     -   648 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:21:58.9326;Raven.Database.Server.HttpServer;Debug;Request #  23: GET     -    60 ms - <default>  - 200 - /stats?noCache=-10960680;
+2012-01-17 22:22:47.8330;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/blogs' was not found;
+2012-01-17 22:22:47.8330;Raven.Database.Server.HttpServer;Debug;Request #  24: GET     -     1 ms - <default>  - 404 - /docs/Raven/Hilo/blogs;
+2012-01-17 22:22:47.9960;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:22:47.9960;Raven.Database.Server.HttpServer;Debug;Request #  25: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:22:48.2480;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/blogs and etag 00000000-0000-0000-0000-000000000000;
+2012-01-17 22:22:48.2783;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/blogs', update: False, ;
+2012-01-17 22:22:48.2783;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 9 - step 1/2;
+2012-01-17 22:22:48.2783;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 10 - step 2/2;
+2012-01-17 22:22:48.2802;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 10, currentWorkCounter: 10, will wait for additional work;
+2012-01-17 22:22:48.2802;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 10, currentWorkCounter: 10, will wait for additional work;
+2012-01-17 22:22:48.2802;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 10, currentWorkCounter: 10, will wait for additional work;
+2012-01-17 22:22:48.2802;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 22:22:48.2802;Raven.Database.Server.HttpServer;Debug;Request #  26: PUT     -    46 ms - <default>  - 201 - /docs/Raven/Hilo/blogs;
+2012-01-17 22:22:48.3740;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 22:22:48.3740;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 11 - step 1/2;
+2012-01-17 22:22:48.3740;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 12 - step 2/2;
+2012-01-17 22:22:48.3740;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 12, currentWorkCounter: 12, will wait for additional work;
+2012-01-17 22:22:48.3740;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 12, currentWorkCounter: 12, will wait for additional work;
+2012-01-17 22:22:48.3916;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 12, currentWorkCounter: 12, will wait for additional work;
+2012-01-17 22:22:48.3916;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 12, currentWorkCounter: 12, will wait for additional work;
+2012-01-17 22:22:54.9462;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 22:22:54.9462;Raven.Database.DocumentDatabase;Debug;Putting a document with key: blogs/1 and etag ;
+2012-01-17 22:22:54.9462;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'blogs/1', update: False, ;
+2012-01-17 22:22:54.9873;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 13 - step 1/2;
+2012-01-17 22:22:54.9873;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 14 - step 2/2;
+2012-01-17 22:22:54.9873;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 14, currentWorkCounter: 14, will wait for additional work;
+2012-01-17 22:22:54.9873;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 22:22:54.9873;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 14, currentWorkCounter: 14, will wait for additional work;
+2012-01-17 22:22:55.0371;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 14, currentWorkCounter: 14, will wait for additional work;
+2012-01-17 22:22:55.0371;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 22:22:55.0751;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Blogs;
+2012-01-17 22:22:55.0263;Raven.Database.Server.HttpServer;Debug;Request #  27: POST    -    93 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 22:22:55.0781;Raven.Database.Server.HttpServer;Debug;"	PUT blogs/1
+";
+2012-01-17 22:22:55.1552;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Blogs' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs/1>>;
+2012-01-17 22:22:55.2031;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs/1> indexed,omitNorms<Tag:Blogs> indexed,omitNorms<LastModified:20120117222254950>>;
+2012-01-17 22:22:55.3027;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Blogs;
+2012-01-17 22:22:55.3632;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 22:22:55.3632;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 15 - step 1/2;
+2012-01-17 22:22:55.3632;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 16 - step 2/2;
+2012-01-17 22:22:55.3632;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 16, currentWorkCounter: 16, will wait for additional work;
+2012-01-17 22:22:55.3632;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 16, currentWorkCounter: 16, will wait for additional work;
+2012-01-17 22:22:55.4433;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 16, currentWorkCounter: 16, will wait for additional work;
+2012-01-17 22:22:55.4433;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 16, currentWorkCounter: 16, will wait for additional work;
+2012-01-17 22:23:11.7968;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:23:11.7968;Raven.Database.Server.HttpServer;Debug;Request #  28: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:23:11.7968;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:23:11.7968;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:23:11.7968;Raven.Database.Server.HttpServer;Debug;Request #  29: GET     -     7 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:24:51.7089;Raven.Database.Server.HttpServer;Debug;Request #  30: GET     -    27 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-2121706283;
+2012-01-17 22:24:51.7089;Raven.Database.Server.HttpServer;Debug;Request #  31: GET     -    33 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=694968336;
+2012-01-17 22:25:19.4716;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:25:19.4716;Raven.Database.Server.HttpServer;Debug;Request #  32: GET     -    14 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:25:19.4716;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was not found;
+2012-01-17 22:25:19.4716;Raven.Database.Server.HttpServer;Debug;Request #  33: GET     -     2 ms - <default>  - 404 - /docs/1;
+2012-01-17 22:25:37.6816;Raven.Database.Server.HttpServer;Debug;Request #  34: GET     -    35 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-415124460;
+2012-01-17 22:26:13.2988;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blog/1' was not found;
+2012-01-17 22:26:13.2988;Raven.Database.Server.HttpServer;Debug;Request #  35: GET     -     1 ms - <default>  - 404 - /docs/blog/1;
+2012-01-17 22:26:29.4726;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:26:29.4726;Raven.Database.Server.HttpServer;Debug;Request #  36: GET     -     5 ms - <default>  - 200 - /docs/blogs/1;
+2012-01-17 22:26:36.6972;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:26:36.6972;Raven.Database.Server.HttpServer;Debug;Request #  37: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:26:47.6386;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was not found;
+2012-01-17 22:26:47.6386;Raven.Database.Server.HttpServer;Debug;Request #  38: GET     -     0 ms - <default>  - 404 - /docs/1;
+2012-01-17 22:26:53.4843;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:26:53.4843;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:26:53.4843;Raven.Database.Server.HttpServer;Debug;Request #  39: GET     -     8 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:26:53.4843;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:26:53.4843;Raven.Database.Server.HttpServer;Debug;Request #  40: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:26:53.6318;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:26:53.6318;Raven.Database.Server.HttpServer;Debug;Request #  41: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:26:57.6982;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:26:57.6982;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:26:57.6982;Raven.Database.Server.HttpServer;Debug;Request #  42: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:26:57.7089;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:26:57.7089;Raven.Database.Server.HttpServer;Debug;Request #  43: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:27:39.7158;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was not found;
+2012-01-17 22:27:39.7158;Raven.Database.Server.HttpServer;Debug;Request #  44: GET     -     3 ms - <default>  - 404 - /docs/1;
+2012-01-17 22:27:39.7363;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:27:39.7363;Raven.Database.Server.HttpServer;Debug;Request #  45: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:27:53.1035;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:27:53.1035;Raven.Database.Server.HttpServer;Debug;Request #  46: GET     -     1 ms - <default>  - 200 - /docs/blogs/1;
+2012-01-17 22:28:44.2988;Raven.Database.Server.HttpServer;Debug;Request #  47: GET     -    51 ms - <default>  - 200 - /stats?noCache=849486700;
+2012-01-17 22:28:50.3583;Raven.Database.Server.HttpServer;Debug;Request #  48: GET     -    39 ms - <default>  - 200 - /stats?noCache=1935946030;
+2012-01-17 22:29:02.4472;Raven.Database.Server.HttpServer;Debug;Request #  49: GET     -    34 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-85261150;
+2012-01-17 22:29:02.4531;Raven.Database.Server.HttpServer;Debug;Request #  50: GET     -    41 ms - <default>  - 200 - /stats?noCache=-1897833701;
+2012-01-17 22:29:08.0419;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:29:08.0419;Raven.Database.Server.HttpServer;Debug;Request #  51: GET     -   353 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:29:08.0488;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:29:08.0488;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:29:08.0488;Raven.Database.Server.HttpServer;Debug;Request #  52: GET     -   338 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:29:26.7900;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:29:26.8134;Raven.Database.Server.HttpServer;Debug;Request #  53: GET     -    25 ms - <default>  - 200 - /docs/blogs/1;
+2012-01-17 22:29:26.8583;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:29:26.8583;Raven.Database.Server.HttpServer;Debug;Request #  54: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:29:39.6015;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:29:39.6015;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:29:39.6015;Raven.Database.Server.HttpServer;Debug;Request #  55: GET     -     1 ms - <default>  - 200 - /docs/blogs/1;
+2012-01-17 22:29:39.6015;Raven.Database.Server.HttpServer;Debug;Request #  56: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:30:34.5087;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:30:34.5087;Raven.Database.Server.HttpServer;Debug;Request #  57: GET     -     4 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:30:34.5898;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:30:34.5898;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:30:34.5898;Raven.Database.Server.HttpServer;Debug;Request #  58: GET     -     6 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:30:58.4560;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:30:58.4560;Raven.Database.Server.HttpServer;Debug;Request #  59: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:30:58.6796;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/1' was found;
+2012-01-17 22:30:58.6796;Raven.Database.Server.HttpServer;Debug;Request #  60: GET     -     1 ms - <default>  - 200 - /docs/blogs/1;
+2012-01-17 22:31:46.0117;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Blogs/1' was found;
+2012-01-17 22:31:46.0117;Raven.Database.Server.HttpServer;Debug;Request #  61: GET     -     1 ms - <default>  - 200 - /docs/Blogs/1;
+2012-01-17 22:31:46.0195;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:31:46.0195;Raven.Database.Server.HttpServer;Debug;Request #  62: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:31:46.1367;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 22:31:46.1367;Raven.Database.DocumentDatabase;Debug;Delete a document with key: Blogs/1 and etag ;
+2012-01-17 22:31:46.1591;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Blogs/1' was deleted;
+2012-01-17 22:31:46.1767;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 17 - step 1/2;
+2012-01-17 22:31:46.1767;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 18 - step 2/2;
+2012-01-17 22:31:46.1767;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 22:31:46.1767;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 18, currentWorkCounter: 18, will wait for additional work;
+2012-01-17 22:31:46.1914;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Raven/DocumentsByEntityName, Keys: Blogs/1;
+2012-01-17 22:31:46.1914;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Blogs/1' was not found;
+2012-01-17 22:31:46.1767;Raven.Database.Server.HttpServer;Debug;Request #  63: POST    -    44 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 22:31:46.1914;Raven.Database.Server.HttpServer;Debug;"	DELETE Blogs/1
+";
+2012-01-17 22:31:46.1914;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (Blogs/1) from Raven/DocumentsByEntityName;
+2012-01-17 22:31:46.2109;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Temp/Blogs, Keys: Blogs/1;
+2012-01-17 22:31:46.2109;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Blogs/1' was not found;
+2012-01-17 22:31:46.2109;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (Blogs/1) from Temp/Blogs;
+2012-01-17 22:31:46.2255;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 18, currentWorkCounter: 18, will wait for additional work;
+2012-01-17 22:31:46.2255;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 18, currentWorkCounter: 18, will wait for additional work;
+2012-01-17 22:31:46.2753;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 18, currentWorkCounter: 18, will wait for additional work;
+2012-01-17 22:31:47.8671;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:31:47.8671;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:31:47.8671;Raven.Database.Server.HttpServer;Debug;Request #  64: GET     -     5 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:31:47.8671;Raven.Database.Server.HttpServer;Debug;Request #  65: GET     -     8 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:36:50.5605;Raven.Database.Server.HttpServer;Debug;Request #  66: GET     -    35 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-1521870433;
+2012-01-17 22:38:20.3222;Raven.Database.Server.HttpServer;Debug;Request #  67: GET     -    46 ms - <default>  - 200 - /stats?noCache=-255329339;
+2012-01-17 22:38:26.3691;Raven.Database.Server.HttpServer;Debug;Request #  68: GET     -    39 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-399076270;
+2012-01-17 22:41:47.1640;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 18, currentWorkCounter: 18, will wait for additional work;
+2012-01-17 22:45:02.2119;Raven.Database.Server.HttpServer;Debug;Request #  69: GET     -    26 ms - <default>  - 200 - /stats?noCache=803889291;
+2012-01-17 22:45:42.6708;Raven.Database.Server.HttpServer;Debug;Request #  70: GET     -    26 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-41209458;
+2012-01-17 22:50:20.0507;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:50:20.0507;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:50:20.0507;Raven.Database.Server.HttpServer;Debug;Request #  71: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:50:20.0507;Raven.Database.Server.HttpServer;Debug;Request #  72: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:50:38.0634;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:50:38.0634;Raven.Database.Server.HttpServer;Debug;Request #  73: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:51:13.2265;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 22:51:13.2265;Raven.Database.DocumentDatabase;Debug;Putting a document with key: 1 and etag ;
+2012-01-17 22:51:13.2265;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key '1', update: False, ;
+2012-01-17 22:51:13.2265;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 19 - step 1/2;
+2012-01-17 22:51:13.2265;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 20 - step 2/2;
+2012-01-17 22:51:13.2265;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 22:51:13.2265;Raven.Database.Server.HttpServer;Debug;Request #  74: POST    -     3 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 22:51:13.2265;Raven.Database.Server.HttpServer;Debug;"	PUT 1
+";
+2012-01-17 22:51:13.2265;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 20, currentWorkCounter: 20, will wait for additional work;
+2012-01-17 22:51:13.2265;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 20, currentWorkCounter: 20, will wait for additional work;
+2012-01-17 22:51:13.2373;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 20, currentWorkCounter: 20, will wait for additional work;
+2012-01-17 22:51:13.2373;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 22:51:13.2373;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:1> indexed,omitNorms<Tag:Blogs> indexed,omitNorms<LastModified:20120117225113227>>;
+2012-01-17 22:51:13.2373;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Blogs;
+2012-01-17 22:51:13.2373;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Blogs' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:1>>;
+2012-01-17 22:51:13.2373;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Blogs;
+2012-01-17 22:51:13.2695;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 22:51:13.2695;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 21 - step 1/2;
+2012-01-17 22:51:13.2695;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 22 - step 2/2;
+2012-01-17 22:51:13.2695;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 22, currentWorkCounter: 22, will wait for additional work;
+2012-01-17 22:51:13.2695;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 22, currentWorkCounter: 22, will wait for additional work;
+2012-01-17 22:51:13.2695;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 22, currentWorkCounter: 22, will wait for additional work;
+2012-01-17 22:51:13.3261;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 22, currentWorkCounter: 22, will wait for additional work;
+2012-01-17 22:51:16.8281;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:51:16.8281;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was found;
+2012-01-17 22:51:16.8681;Raven.Database.Server.HttpServer;Debug;Request #  75: GET     -    42 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:51:16.8681;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:51:16.8681;Raven.Database.Server.HttpServer;Debug;Request #  76: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:51:21.6210;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:51:21.6210;Raven.Database.Server.HttpServer;Debug;Request #  77: GET     -     8 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:51:21.6386;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was found;
+2012-01-17 22:51:21.6386;Raven.Database.Server.HttpServer;Debug;Request #  78: GET     -     2 ms - <default>  - 200 - /docs/1;
+2012-01-17 22:51:38.4736;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:51:38.4736;Raven.Database.Server.HttpServer;Debug;Request #  79: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:51:43.9726;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/blogs' was found;
+2012-01-17 22:51:43.9726;Raven.Database.Server.HttpServer;Debug;Request #  80: GET     -     1 ms - <default>  - 200 - /docs/Raven/Hilo/blogs;
+2012-01-17 22:51:44.0517;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/blogs and etag 00000000-0000-0200-0000-000000000001;
+2012-01-17 22:51:44.0517;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/blogs', update: True, ;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 23 - step 1/2;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 24 - step 2/2;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 24, currentWorkCounter: 24, will wait for additional work;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 25 - step 1/2;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 26 - step 2/2;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 26, currentWorkCounter: 26, will wait for additional work;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 26, currentWorkCounter: 26, will wait for additional work;
+2012-01-17 22:51:44.0517;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 26, currentWorkCounter: 26, will wait for additional work;
+2012-01-17 22:51:44.0634;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 26, currentWorkCounter: 26, will wait for additional work;
+2012-01-17 22:51:44.0517;Raven.Database.Server.HttpServer;Debug;Request #  81: PUT     -    15 ms - <default>  - 201 - /docs/Raven/Hilo/blogs;
+2012-01-17 22:51:44.0634;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 22:51:44.0634;Raven.Database.DocumentDatabase;Debug;Putting a document with key: blogs/33 and etag ;
+2012-01-17 22:51:44.0634;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'blogs/33', update: False, ;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 27 - step 1/2;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 28 - step 2/2;
+2012-01-17 22:51:44.1201;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 28, currentWorkCounter: 28, will wait for additional work;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 28, currentWorkCounter: 28, will wait for additional work;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 28, currentWorkCounter: 28, will wait for additional work;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 22:51:44.1201;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Blogs;
+2012-01-17 22:51:44.1259;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Blogs' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs/33>>;
+2012-01-17 22:51:44.1259;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs/33> indexed,omitNorms<Tag:Blogs> indexed,omitNorms<LastModified:20120117225144077>>;
+2012-01-17 22:51:44.1259;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Blogs;
+2012-01-17 22:51:44.1201;Raven.Database.Server.HttpServer;Debug;Request #  82: POST    -    47 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 22:51:44.1259;Raven.Database.Server.HttpServer;Debug;"	PUT blogs/33
+";
+2012-01-17 22:51:44.1572;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 22:51:44.1572;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 29 - step 1/2;
+2012-01-17 22:51:44.1572;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 30 - step 2/2;
+2012-01-17 22:51:44.1572;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 30, currentWorkCounter: 30, will wait for additional work;
+2012-01-17 22:51:44.1728;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 30, currentWorkCounter: 30, will wait for additional work;
+2012-01-17 22:51:44.1728;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 30, currentWorkCounter: 30, will wait for additional work;
+2012-01-17 22:51:44.2001;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 30, currentWorkCounter: 30, will wait for additional work;
+2012-01-17 22:51:44.2802;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 22:51:44.2802;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was found;
+2012-01-17 22:51:44.2802;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was found;
+2012-01-17 22:51:44.2802;Raven.Database.Server.HttpServer;Debug;Request #  83: GET     -     3 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 22:51:44.9091;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 22:51:44.9091;Raven.Database.Server.HttpServer;Debug;Request #  84: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 22:53:23.3671;Raven.Database.Server.HttpServer;Debug;Request #  85: GET     -    26 ms - <default>  - 200 - /stats?noCache=-2066106096;
+2012-01-17 22:53:23.3769;Raven.Database.Server.HttpServer;Debug;Request #  86: GET     -    36 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=2045941988;
+2012-01-17 22:53:23.4287;Raven.Database.Server.HttpServer;Debug;Request #  87: GET     -    48 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-1963985896;
+2012-01-17 22:54:33.6123;Raven.Database.Server.HttpServer;Debug;Request #  88: GET     -   484 ms - <default>  - 200 - /stats?noCache=-1212133144;
+2012-01-17 22:55:01.4863;Raven.Database.Server.HttpServer;Debug;Request #  89: GET     -    26 ms - <default>  - 200 - /stats?noCache=1840920900;
+2012-01-17 22:55:07.5087;Raven.Database.Server.HttpServer;Debug;Request #  90: GET     -    28 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=453224620;
+2012-01-17 22:59:35.4648;Raven.Database.Server.HttpServer;Debug;Request #  91: GET     -    40 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=645053369;
+2012-01-17 23:01:43.0507;Raven.Database.Server.HttpServer;Debug;Request #  92: GET     -    26 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=208396320;
+2012-01-17 23:01:44.1728;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 30, currentWorkCounter: 30, will wait for additional work;
+2012-01-17 23:01:49.1083;Raven.Database.Server.HttpServer;Debug;Request #  93: GET     -    37 ms - <default>  - 200 - /stats?noCache=1665000455;
+2012-01-17 23:04:39.1748;Raven.Database.Server.HttpServer;Debug;Request #  94: GET     -    30 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-2142571900;
+2012-01-17 23:06:15.2441;Raven.Database.Server.HttpServer;Debug;Request #  95: GET     -    30 ms - <default>  - 200 - /stats?noCache=116974078;
+2012-01-17 23:08:39.1279;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:08:39.1279;Raven.Database.Server.HttpServer;Debug;Request #  96: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:08:39.1279;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:08:39.1279;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was found;
+2012-01-17 23:08:39.1279;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was found;
+2012-01-17 23:08:39.1279;Raven.Database.Server.HttpServer;Debug;Request #  97: GET     -     5 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:08:40.9648;Raven.Database.Server.HttpServer;Debug;Request #  98: GET     -    44 ms - <default>  - 200 - /stats?noCache=1711284562;
+2012-01-17 23:08:48.4033;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was found;
+2012-01-17 23:08:48.4121;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:08:48.4033;Raven.Database.Server.HttpServer;Debug;Request #  99: GET     -     1 ms - <default>  - 200 - /docs/1;
+2012-01-17 23:08:48.4121;Raven.Database.Server.HttpServer;Debug;Request # 100: GET     -     3 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:08:53.7431;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was found;
+2012-01-17 23:08:53.7431;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:08:53.7431;Raven.Database.Server.HttpServer;Debug;Request # 101: GET     -     7 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:08:53.7431;Raven.Database.Server.HttpServer;Debug;Request # 102: GET     -     8 ms - <default>  - 200 - /docs/1;
+2012-01-17 23:08:53.8349;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:08:53.8349;Raven.Database.DocumentDatabase;Debug;Delete a document with key: 1 and etag ;
+2012-01-17 23:08:53.8349;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was deleted;
+2012-01-17 23:08:53.8632;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 31 - step 1/2;
+2012-01-17 23:08:53.8632;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 32 - step 2/2;
+2012-01-17 23:08:53.8632;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:08:53.8632;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 32, currentWorkCounter: 32, will wait for additional work;
+2012-01-17 23:08:53.8964;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 32, currentWorkCounter: 32, will wait for additional work;
+2012-01-17 23:08:53.8964;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Raven/DocumentsByEntityName, Keys: 1;
+2012-01-17 23:08:53.8964;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was not found;
+2012-01-17 23:08:53.8964;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (1) from Raven/DocumentsByEntityName;
+2012-01-17 23:08:53.8964;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Temp/Blogs, Keys: 1;
+2012-01-17 23:08:53.8964;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '1' was not found;
+2012-01-17 23:08:53.8964;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (1) from Temp/Blogs;
+2012-01-17 23:08:53.9101;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 32, currentWorkCounter: 32, will wait for additional work;
+2012-01-17 23:08:53.8632;Raven.Database.Server.HttpServer;Debug;Request # 103: POST    -    30 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:08:53.9335;Raven.Database.Server.HttpServer;Debug;"	DELETE 1
+";
+2012-01-17 23:08:53.9785;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 32, currentWorkCounter: 32, will wait for additional work;
+2012-01-17 23:08:55.6230;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:08:55.6230;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was found;
+2012-01-17 23:08:55.6230;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:08:55.6230;Raven.Database.Server.HttpServer;Debug;Request # 104: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:08:55.6230;Raven.Database.Server.HttpServer;Debug;Request # 105: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:09:21.0996;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was found;
+2012-01-17 23:09:21.1308;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:09:21.0996;Raven.Database.Server.HttpServer;Debug;Request # 106: GET     -     6 ms - <default>  - 200 - /docs/blogs/33;
+2012-01-17 23:09:21.1308;Raven.Database.Server.HttpServer;Debug;Request # 107: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:09:36.1181;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was found;
+2012-01-17 23:09:36.1181;Raven.Database.Server.HttpServer;Debug;Request # 108: GET     -     1 ms - <default>  - 200 - /docs/blogs/33;
+2012-01-17 23:09:36.1259;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:09:36.1259;Raven.Database.Server.HttpServer;Debug;Request # 109: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:09:36.2832;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:09:36.2832;Raven.Database.DocumentDatabase;Debug;Delete a document with key: blogs/33 and etag ;
+2012-01-17 23:09:36.2832;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was deleted;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 33 - step 1/2;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 34 - step 2/2;
+2012-01-17 23:09:36.2968;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 34, currentWorkCounter: 34, will wait for additional work;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 34, currentWorkCounter: 34, will wait for additional work;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 34, currentWorkCounter: 34, will wait for additional work;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Raven/DocumentsByEntityName, Keys: blogs/33;
+2012-01-17 23:09:36.2968;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was not found;
+2012-01-17 23:09:36.2968;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (blogs/33) from Raven/DocumentsByEntityName;
+2012-01-17 23:09:36.2968;Raven.Database.Server.HttpServer;Debug;Request # 110: POST    -    31 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:09:36.3105;Raven.Database.Server.HttpServer;Debug;"	DELETE blogs/33
+";
+2012-01-17 23:09:36.3105;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Temp/Blogs, Keys: blogs/33;
+2012-01-17 23:09:36.3105;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/33' was not found;
+2012-01-17 23:09:36.3105;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (blogs/33) from Temp/Blogs;
+2012-01-17 23:09:36.3300;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:09:36.3300;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:09:36.3300;Raven.Database.Server.HttpServer;Debug;Request # 111: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:09:36.3300;Raven.Database.Server.HttpServer;Debug;Request # 112: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:09:36.3691;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 34, currentWorkCounter: 34, will wait for additional work;
+2012-01-17 23:09:58.0185;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:09:58.0185;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/blogs' was found;
+2012-01-17 23:09:58.0185;Raven.Database.Server.HttpServer;Debug;Request # 113: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:09:58.0185;Raven.Database.Server.HttpServer;Debug;Request # 114: GET     -     1 ms - <default>  - 200 - /docs/Raven/Hilo/blogs;
+2012-01-17 23:09:58.0957;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/blogs and etag 00000000-0000-0200-0000-000000000004;
+2012-01-17 23:09:58.0957;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/blogs', update: True, ;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 35 - step 1/2;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 36 - step 2/2;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 37 - step 1/2;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 38 - step 2/2;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 38, currentWorkCounter: 38, will wait for additional work;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 38, currentWorkCounter: 38, will wait for additional work;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 38, currentWorkCounter: 38, will wait for additional work;
+2012-01-17 23:09:58.0957;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 38, currentWorkCounter: 38, will wait for additional work;
+2012-01-17 23:09:58.0957;Raven.Database.Server.HttpServer;Debug;Request # 115: PUT     -     5 ms - <default>  - 201 - /docs/Raven/Hilo/blogs;
+2012-01-17 23:09:58.1611;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:09:58.1611;Raven.Database.DocumentDatabase;Debug;Putting a document with key: blogs-65 and etag ;
+2012-01-17 23:09:58.1611;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'blogs-65', update: False, ;
+2012-01-17 23:09:58.1611;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 39 - step 1/2;
+2012-01-17 23:09:58.1611;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 40 - step 2/2;
+2012-01-17 23:09:58.1611;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:09:58.1611;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 40, currentWorkCounter: 40, will wait for additional work;
+2012-01-17 23:09:58.1611;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 40, currentWorkCounter: 40, will wait for additional work;
+2012-01-17 23:09:58.1611;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 40, currentWorkCounter: 40, will wait for additional work;
+2012-01-17 23:09:58.1611;Raven.Database.Server.HttpServer;Debug;Request # 116: POST    -    12 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:09:58.1611;Raven.Database.Server.HttpServer;Debug;"	PUT blogs-65
+";
+2012-01-17 23:09:58.1845;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:09:58.1845;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 41 - step 1/2;
+2012-01-17 23:09:58.1845;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 42 - step 2/2;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 42, currentWorkCounter: 42, will wait for additional work;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 42, currentWorkCounter: 42, will wait for additional work;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 42, currentWorkCounter: 42, will wait for additional work;
+2012-01-17 23:09:58.1855;Raven.Database.Server.HttpServer;Debug;Request # 117: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs-65> indexed,omitNorms<Tag:Blogs> indexed,omitNorms<LastModified:20120117230958162>>;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Blogs;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Blogs' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs-65>>;
+2012-01-17 23:09:58.1855;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Blogs;
+2012-01-17 23:09:58.1855;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:09:58.1855;Raven.Database.Server.HttpServer;Debug;Request # 118: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:09:58.2333;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:09:58.2333;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 43 - step 1/2;
+2012-01-17 23:09:58.2333;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 44 - step 2/2;
+2012-01-17 23:09:58.2333;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 44, currentWorkCounter: 44, will wait for additional work;
+2012-01-17 23:09:58.2333;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 44, currentWorkCounter: 44, will wait for additional work;
+2012-01-17 23:09:58.2666;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 44, currentWorkCounter: 44, will wait for additional work;
+2012-01-17 23:09:58.2666;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 44, currentWorkCounter: 44, will wait for additional work;
+2012-01-17 23:10:06.5439;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:10:06.5458;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:10:06.5458;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:10:06.5458;Raven.Database.Server.HttpServer;Debug;Request # 119: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:10:06.5458;Raven.Database.Server.HttpServer;Debug;Request # 120: GET     -     3 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:15:28.1787;Raven.Database.Server.HttpServer;Debug;Request # 121: GET     -    30 ms - <default>  - 200 - /stats?noCache=-682004758;
+2012-01-17 23:15:34.2783;Raven.Database.Server.HttpServer;Debug;Request # 122: GET     -    26 ms - <default>  - 200 - /stats?noCache=-164720515;
+2012-01-17 23:15:52.5048;Raven.Database.Server.HttpServer;Debug;Request # 123: GET     - 5.146 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=388123546;
+2012-01-17 23:15:52.5156;Raven.Database.Server.HttpServer;Debug;Request # 124: GET     - 1.083 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=1902748746;
+2012-01-17 23:15:52.5156;Raven.Database.Server.HttpServer;Debug;Request # 125: GET     - 1.087 ms - <default>  - 200 - /stats?noCache=-1141292923;
+2012-01-17 23:16:00.5644;Raven.Database.Server.HttpServer;Debug;Request # 126: GET     - 2.049 ms - <default>  - 200 - /stats?noCache=-694468187;
+2012-01-17 23:16:07.2841;Raven.Database.Server.HttpServer;Debug;Request # 127: GET     -   674 ms - <default>  - 200 - /stats?noCache=1106977516;
+2012-01-17 23:16:12.7832;Raven.Database.Server.HttpServer;Debug;Request # 128: GET     -    68 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=1368630367;
+2012-01-17 23:16:12.7832;Raven.Database.Server.HttpServer;Debug;Request # 129: GET     -    88 ms - <default>  - 200 - /stats?noCache=2064390930;
+2012-01-17 23:16:35.0351;Raven.Database.Server.HttpServer;Debug;Request # 130: GET     -    44 ms - <default>  - 200 - /stats?noCache=1037050858;
+2012-01-17 23:16:46.1328;Raven.Database.Server.HttpServer;Debug;Request # 131: GET     -    29 ms - <default>  - 200 - /stats?noCache=-933045870;
+2012-01-17 23:19:58.2392;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 44, currentWorkCounter: 44, will wait for additional work;
+2012-01-17 23:21:57.8535;Raven.Database.Server.HttpServer;Debug;Request # 132: GET     -   198 ms - <default>  - 200 - /stats?noCache=-1678638496;
+2012-01-17 23:22:14.9042;Raven.Database.Server.HttpServer;Debug;Request # 133: GET     -    41 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=197272392;
+2012-01-17 23:22:20.3525;Raven.Database.Server.HttpServer;Debug;Request # 134: GET     -   467 ms - <default>  - 200 - /stats?noCache=-2121500669;
+2012-01-17 23:22:28.3154;Raven.Database.Server.HttpServer;Debug;Request # 135: GET     - 1.331 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-2138980300;
+2012-01-17 23:22:28.3154;Raven.Database.Server.HttpServer;Debug;Request # 136: GET     - 1.332 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=1520293543;
+2012-01-17 23:22:28.3583;Raven.Database.Server.HttpServer;Debug;Request # 137: GET     - 2.390 ms - <default>  - 200 - /stats?noCache=1933084233;
+2012-01-17 23:22:35.1660;Raven.Database.Server.HttpServer;Debug;Request # 138: GET     - 1.131 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-1425608174;
+2012-01-17 23:22:35.1738;Raven.Database.Server.HttpServer;Debug;Request # 139: GET     - 1.139 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-837302592;
+2012-01-17 23:22:35.7861;Raven.Database.Server.HttpServer;Debug;Request # 140: GET     - 1.758 ms - <default>  - 200 - /stats?noCache=-1809103369;
+2012-01-17 23:22:42.1845;Raven.Database.Server.HttpServer;Debug;Request # 141: GET     - 1.126 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=1379728094;
+2012-01-17 23:22:42.1923;Raven.Database.Server.HttpServer;Debug;Request # 142: GET     - 1.133 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-483959962;
+2012-01-17 23:22:42.2412;Raven.Database.Server.HttpServer;Debug;Request # 143: GET     - 1.184 ms - <default>  - 200 - /stats?noCache=1906608994;
+2012-01-17 23:22:47.7431;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:22:47.7431;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:22:47.7431;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:22:47.7607;Raven.Database.Server.HttpServer;Debug;Request # 144: GET     -   372 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:22:47.7607;Raven.Database.Server.HttpServer;Debug;Request # 145: GET     -   365 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:22:58.1220;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:22:58.1230;Raven.Database.Server.HttpServer;Debug;Request # 146: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:22:58.1582;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:22:58.1582;Raven.Database.Server.HttpServer;Debug;Request # 147: GET     -     1 ms - <default>  - 200 - /docs/blogs-65;
+2012-01-17 23:23:02.0097;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:23:02.0097;Raven.Database.Server.HttpServer;Debug;Request # 148: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:23:02.3964;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index Temp%2fPosts%2fByBlogId:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Temp_2fPosts_2fByBlogId : AbstractViewGenerator
+{
+	public Index_Temp_2fPosts_2fByBlogId()
+	{
+		this.ViewText = @""from doc in docs.Posts
+select new { BlogId = doc.BlogId }
+"";
+		this.ForEntityNames.Add(""Posts"");
+		this.AddMapDefinition(docs => from doc in docs
+			where doc[""@metadata""][""Raven-Entity-Name""] == ""Posts""
+			select new { BlogId = doc.BlogId, __document_id = doc.__document_id });
+		this.AddField(""BlogId"");
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""BlogId"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""BlogId"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Temp_2fPosts_2fByBlogId : AbstractViewGenerator
+{
+	public Index_Temp_2fPosts_2fByBlogId()
+	{
+		this.ViewText = @""from doc in docs.Posts
+select new { BlogId = doc.BlogId }
+"";
+		this.ForEntityNames.Add(""Posts"");
+		this.AddMapDefinition(docs => from doc in docs
+			where doc[""@metadata""][""Raven-Entity-Name""] == ""Posts""
+			select new { BlogId = doc.BlogId, __document_id = doc.__document_id });
+		this.AddField(""BlogId"");
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""BlogId"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""BlogId"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+";
+2012-01-17 23:23:02.3964;Raven.Database.Indexing.IndexStorage;Info;Creating index Temp/Posts/ByBlogId with encoded name Temp/Posts/ByBlogId;
+2012-01-17 23:23:02.3964;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for Temp/Posts/ByBlogId;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 45 - step 1/2;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 46 - step 2/2;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-65;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 46, currentWorkCounter: 46, will wait for additional work;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 46, currentWorkCounter: 46, will wait for additional work;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 47 - step 1/2;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 48 - step 2/2;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 48, currentWorkCounter: 48, will wait for additional work;
+2012-01-17 23:23:02.4111;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 48, currentWorkCounter: 48, will wait for additional work;
+2012-01-17 23:23:02.4277;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 48, currentWorkCounter: 48, will wait for additional work;
+2012-01-17 23:23:02.5058;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 49 - step 1/2;
+2012-01-17 23:23:02.5058;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 50 - step 2/2;
+2012-01-17 23:23:02.5058;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 50, currentWorkCounter: 50, will wait for additional work;
+2012-01-17 23:23:02.5058;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 50, currentWorkCounter: 50, will wait for additional work;
+2012-01-17 23:23:02.5058;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 50, currentWorkCounter: 50, will wait for additional work;
+2012-01-17 23:23:02.5058;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 50, currentWorkCounter: 50, will wait for additional work;
+2012-01-17 23:23:02.5332;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-65;
+2012-01-17 23:23:02.5644;Raven.Database.Server.HttpServer;Debug;Request # 149: GET     -   417 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-65&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:23:07.0341;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:23:07.0341;Raven.Database.Server.HttpServer;Debug;Request # 150: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:23:07.7050;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:23:07.7050;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:23:07.7050;Raven.Database.Server.HttpServer;Debug;Request # 151: GET     -    10 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:23:16.0947;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:23:16.0947;Raven.Database.Server.HttpServer;Debug;Request # 152: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:23:16.1630;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/posts' was not found;
+2012-01-17 23:23:16.1630;Raven.Database.Server.HttpServer;Debug;Request # 153: GET     -     0 ms - <default>  - 404 - /docs/Raven/Hilo/posts;
+2012-01-17 23:23:16.4062;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/posts and etag 00000000-0000-0000-0000-000000000000;
+2012-01-17 23:23:16.4062;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/posts', update: False, ;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 51 - step 1/2;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 52 - step 2/2;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 52, currentWorkCounter: 52, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 52, currentWorkCounter: 52, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 52, currentWorkCounter: 52, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 53 - step 1/2;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 54 - step 2/2;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 54, currentWorkCounter: 54, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 54, currentWorkCounter: 54, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 54, currentWorkCounter: 54, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 54, currentWorkCounter: 54, will wait for additional work;
+2012-01-17 23:23:16.4062;Raven.Database.Server.HttpServer;Debug;Request # 154: PUT     -     3 ms - <default>  - 201 - /docs/Raven/Hilo/posts;
+2012-01-17 23:23:16.4531;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:23:16.4531;Raven.Database.DocumentDatabase;Debug;Putting a document with key: posts-1 and etag ;
+2012-01-17 23:23:16.4531;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'posts-1', update: False, ;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 55 - step 1/2;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 56 - step 2/2;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 56, currentWorkCounter: 56, will wait for additional work;
+2012-01-17 23:23:16.4531;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 56, currentWorkCounter: 56, will wait for additional work;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 56, currentWorkCounter: 56, will wait for additional work;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:23:16.4531;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:posts-1> indexed,omitNorms<Tag:Posts> indexed,omitNorms<LastModified:20120117232316457>>;
+2012-01-17 23:23:16.4892;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:23:16.4892;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Posts/ByBlogId;
+2012-01-17 23:23:16.4531;Raven.Database.Server.HttpServer;Debug;Request # 155: POST    -     3 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:23:16.5185;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Posts/ByBlogId' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:posts-1> indexed,tokenized<BlogId:blogs-65>>;
+2012-01-17 23:23:16.5185;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Posts/ByBlogId;
+2012-01-17 23:23:16.5185;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:23:16.5185;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-65;
+2012-01-17 23:23:16.5312;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'posts-1' was found;
+2012-01-17 23:23:16.5312;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 57 - step 1/2;
+2012-01-17 23:23:16.5312;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 58 - step 2/2;
+2012-01-17 23:23:16.5312;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 58, currentWorkCounter: 58, will wait for additional work;
+2012-01-17 23:23:16.5312;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 58, currentWorkCounter: 58, will wait for additional work;
+2012-01-17 23:23:16.5126;Raven.Database.Server.HttpServer;Debug;"	PUT posts-1
+";
+2012-01-17 23:23:16.5585;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 59 - step 1/2;
+2012-01-17 23:23:16.5585;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 60 - step 2/2;
+2012-01-17 23:23:16.5185;Raven.Database.Server.HttpServer;Debug;Request # 156: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:23:16.5644;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 60, currentWorkCounter: 60, will wait for additional work;
+2012-01-17 23:23:16.5644;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 60, currentWorkCounter: 60, will wait for additional work;
+2012-01-17 23:23:16.5644;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 60, currentWorkCounter: 60, will wait for additional work;
+2012-01-17 23:23:16.5312;Raven.Database.Server.HttpServer;Debug;Request # 157: GET     -     6 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-65&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:23:16.5644;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 60, currentWorkCounter: 60, will wait for additional work;
+2012-01-17 23:23:21.9501;Raven.Database.Server.HttpServer;Debug;Request # 158: GET     -   340 ms - <default>  - 200 - /stats?noCache=-452859559;
+2012-01-17 23:25:08.2236;Raven.Database.Server.HttpServer;Debug;Request # 159: GET     - 1.140 ms - <default>  - 200 - /stats?noCache=1486550748;
+2012-01-17 23:27:04.3769;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:04.3769;Raven.Database.Server.HttpServer;Debug;Request # 160: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:04.5126;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:27:04.5146;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:27:04.5146;Raven.Database.Server.HttpServer;Debug;Request # 161: GET     -     8 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:27:22.5322;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:22.5322;Raven.Database.Server.HttpServer;Debug;Request # 162: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:22.5654;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/blogs' was found;
+2012-01-17 23:27:22.5654;Raven.Database.Server.HttpServer;Debug;Request # 163: GET     -     0 ms - <default>  - 200 - /docs/Raven/Hilo/blogs;
+2012-01-17 23:27:22.6679;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/blogs and etag 00000000-0000-0200-0000-000000000006;
+2012-01-17 23:27:22.6679;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/blogs', update: True, ;
+2012-01-17 23:27:22.6679;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 61 - step 1/2;
+2012-01-17 23:27:22.6679;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 62 - step 2/2;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 62, currentWorkCounter: 62, will wait for additional work;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 63 - step 1/2;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 64 - step 2/2;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 64, currentWorkCounter: 64, will wait for additional work;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 64, currentWorkCounter: 64, will wait for additional work;
+2012-01-17 23:27:22.6699;Raven.Database.Server.HttpServer;Debug;Request # 164: PUT     -    23 ms - <default>  - 201 - /docs/Raven/Hilo/blogs;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 64, currentWorkCounter: 64, will wait for additional work;
+2012-01-17 23:27:22.6699;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 64, currentWorkCounter: 64, will wait for additional work;
+2012-01-17 23:27:22.7509;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:27:22.7509;Raven.Database.DocumentDatabase;Debug;Putting a document with key: blogs/97 and etag ;
+2012-01-17 23:27:22.7509;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'blogs/97', update: False, ;
+2012-01-17 23:27:22.7509;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 65 - step 1/2;
+2012-01-17 23:27:22.7509;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 66 - step 2/2;
+2012-01-17 23:27:22.7509;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:27:22.7509;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:27:22.7509;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs/97> indexed,omitNorms<Tag:Blogs> indexed,omitNorms<LastModified:20120117232722751>>;
+2012-01-17 23:27:22.7509;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 66, currentWorkCounter: 66, will wait for additional work;
+2012-01-17 23:27:22.7636;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Blogs;
+2012-01-17 23:27:22.7636;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Blogs' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs/97>>;
+2012-01-17 23:27:22.7636;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Blogs;
+2012-01-17 23:27:22.7509;Raven.Database.Server.HttpServer;Debug;Request # 165: POST    -     6 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:27:22.7636;Raven.Database.Server.HttpServer;Debug;"	PUT blogs/97
+";
+2012-01-17 23:27:22.7929;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:22.7929;Raven.Database.Server.HttpServer;Debug;Request # 166: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:22.8271;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:27:22.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:27:22.8271;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:27:22.8271;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 67 - step 1/2;
+2012-01-17 23:27:22.8271;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 68 - step 2/2;
+2012-01-17 23:27:22.8271;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 68, currentWorkCounter: 68, will wait for additional work;
+2012-01-17 23:27:22.8271;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 68, currentWorkCounter: 68, will wait for additional work;
+2012-01-17 23:27:22.8271;Raven.Database.Server.HttpServer;Debug;Request # 167: GET     -    34 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:27:22.8593;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:27:22.8593;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 69 - step 1/2;
+2012-01-17 23:27:22.8593;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 70 - step 2/2;
+2012-01-17 23:27:22.8857;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 70, currentWorkCounter: 70, will wait for additional work;
+2012-01-17 23:27:22.8916;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 70, currentWorkCounter: 70, will wait for additional work;
+2012-01-17 23:27:22.9082;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 70, currentWorkCounter: 70, will wait for additional work;
+2012-01-17 23:27:22.9082;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 70, currentWorkCounter: 70, will wait for additional work;
+2012-01-17 23:27:34.4130;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:34.4130;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '97' was not found;
+2012-01-17 23:27:34.4130;Raven.Database.Server.HttpServer;Debug;Request # 168: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:34.4130;Raven.Database.Server.HttpServer;Debug;Request # 169: GET     -     1 ms - <default>  - 404 - /docs/97;
+2012-01-17 23:27:36.3925;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:36.3925;Raven.Database.Server.HttpServer;Debug;Request # 170: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:37.9541;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:27:37.9541;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:27:37.9541;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:27:37.9541;Raven.Database.Server.HttpServer;Debug;Request # 171: GET     -     4 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:27:45.5810;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:45.5810;Raven.Database.Server.HttpServer;Debug;Request # 172: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:45.6992;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs;
+2012-01-17 23:27:45.7011;Raven.Database.Server.HttpServer;Debug;Request # 173: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:27:51.1220;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:27:51.1240;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:27:51.1240;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:27:51.1240;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:27:51.1240;Raven.Database.Server.HttpServer;Debug;Request # 174: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:27:51.1240;Raven.Database.Server.HttpServer;Debug;Request # 175: GET     -     3 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:29:16.9785;Raven.Database.Server.HttpServer;Debug;Request # 176: GET     -    40 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=872214862;
+2012-01-17 23:29:23.0097;Raven.Database.Server.HttpServer;Debug;Request # 177: GET     -    29 ms - <default>  - 200 - /stats?noCache=-1755292987;
+2012-01-17 23:29:23.1103;Raven.Database.Server.HttpServer;Debug;Request # 178: GET     -    79 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-1441571695;
+2012-01-17 23:30:37.8505;Raven.Database.Server.HttpServer;Debug;Request # 179: GET     -    29 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=-1183247486;
+2012-01-17 23:33:38.4355;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:33:38.4355;Raven.Database.Server.HttpServer;Debug;Request # 180: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:34:35.7441;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:34:35.7441;Raven.Database.Server.HttpServer;Debug;Request # 181: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:34:35.8779;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:34:35.8779;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:34:35.8779;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:34:35.8779;Raven.Database.Server.HttpServer;Debug;Request # 182: GET     -    15 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:34:47.6777;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:34:47.6777;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:34:47.6777;Raven.Database.Server.HttpServer;Debug;Request # 183: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:34:47.6777;Raven.Database.Server.HttpServer;Debug;Request # 184: GET     -     1 ms - <default>  - 200 - /docs/blogs/97;
+2012-01-17 23:34:53.2128;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:34:53.2128;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:34:53.2128;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:34:53.2128;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:34:53.2128;Raven.Database.Server.HttpServer;Debug;Request # 185: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:34:53.2167;Raven.Database.Server.HttpServer;Debug;Request # 186: GET     -     4 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:34:55.4531;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '97' was not found;
+2012-01-17 23:34:55.4531;Raven.Database.Server.HttpServer;Debug;Request # 187: GET     -     2 ms - <default>  - 404 - /docs/97;
+2012-01-17 23:35:06.8417;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:35:06.8417;Raven.Database.Server.HttpServer;Debug;Request # 188: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:35:21.0605;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:35:21.0605;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '97' was not found;
+2012-01-17 23:35:21.0605;Raven.Database.Server.HttpServer;Debug;Request # 189: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:35:21.0605;Raven.Database.Server.HttpServer;Debug;Request # 190: GET     -     1 ms - <default>  - 404 - /docs/97;
+2012-01-17 23:36:44.1367;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:36:44.1367;Raven.Database.Server.HttpServer;Debug;Request # 191: GET     -     3 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:37:22.8857;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 70, currentWorkCounter: 70, will wait for additional work;
+2012-01-17 23:42:09.0781;Raven.Database.Server.HttpServer;Debug;Request # 192: GET     -    26 ms - <default>  - 200 - /stats?noCache=-1928693998;
+2012-01-17 23:42:47.4101;Raven.Database.Server.HttpServer;Debug;Request # 193: GET     -    28 ms - <default>  - 200 - /stats?noCache=224095438;
+2012-01-17 23:43:15.3251;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:43:15.3251;Raven.Database.Server.HttpServer;Debug;Request # 194: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:43:15.4482;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:43:15.4482;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:43:15.4482;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:43:15.4482;Raven.Database.Server.HttpServer;Debug;Request # 195: GET     -     3 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:43:15.7939;Raven.Database.Server.HttpServer;Debug;Request # 196: GET     -    45 ms - <default>  - 200 - /stats?noCache=-697267378;
+2012-01-17 23:45:05.5439;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:45:05.5449;Raven.Database.Server.HttpServer;Debug;Request # 197: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:45:05.5449;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:45:05.5449;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:45:05.5449;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:45:05.5449;Raven.Database.Server.HttpServer;Debug;Request # 198: GET     -     5 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:45:14.5361;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '97' was not found;
+2012-01-17 23:45:14.5361;Raven.Database.Server.HttpServer;Debug;Request # 199: GET     -     1 ms - <default>  - 404 - /docs/97;
+2012-01-17 23:45:14.5361;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:45:14.5361;Raven.Database.Server.HttpServer;Debug;Request # 200: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:45:52.6904;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key '97' was not found;
+2012-01-17 23:45:52.6904;Raven.Database.Server.HttpServer;Debug;Request # 201: GET     -     1 ms - <default>  - 404 - /docs/97;
+2012-01-17 23:45:52.7753;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:45:52.7753;Raven.Database.Server.HttpServer;Debug;Request # 202: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:47:22.8857;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 70, currentWorkCounter: 70, will wait for additional work;
+2012-01-17 23:47:51.0166;Raven.Database.Server.HttpServer;Debug;Request # 203: GET     -   159 ms - <default>  - 200 - /stats?noCache=469014830;
+2012-01-17 23:47:56.9296;Raven.Database.Server.HttpServer;Debug;Request # 204: GET     -    36 ms - <default>  - 200 - /stats?noCache=-808145390;
+2012-01-17 23:48:11.8095;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:11.8095;Raven.Database.Server.HttpServer;Debug;Request # 205: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:48:11.8916;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:48:11.8916;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:48:11.8916;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:48:11.8916;Raven.Database.Server.HttpServer;Debug;Request # 206: GET     -    36 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:48:16.1132;Raven.Database.Server.HttpServer;Debug;Request # 207: GET     -    31 ms - <default>  - 200 - /docs/?start=0&pageSize=16&noCache=942815431;
+2012-01-17 23:48:17.7285;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:48:17.7285;Raven.Database.Server.HttpServer;Debug;Request # 208: GET     -     1 ms - <default>  - 200 - /docs/blogs-65;
+2012-01-17 23:48:17.7285;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:17.7285;Raven.Database.Server.HttpServer;Debug;Request # 209: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:48:20.9179;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was found;
+2012-01-17 23:48:20.9179;Raven.Database.Server.HttpServer;Debug;Request # 210: GET     -     1 ms - <default>  - 200 - /docs/blogs-65;
+2012-01-17 23:48:20.9355;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:20.9355;Raven.Database.Server.HttpServer;Debug;Request # 211: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:48:21.0263;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:48:21.0263;Raven.Database.DocumentDatabase;Debug;Delete a document with key: blogs-65 and etag ;
+2012-01-17 23:48:21.0263;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was deleted;
+2012-01-17 23:48:21.0312;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 71 - step 1/2;
+2012-01-17 23:48:21.0312;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 72 - step 2/2;
+2012-01-17 23:48:21.0312;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:48:21.0312;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Raven/DocumentsByEntityName, Keys: blogs-65;
+2012-01-17 23:48:21.0312;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was not found;
+2012-01-17 23:48:21.0312;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (blogs-65) from Raven/DocumentsByEntityName;
+2012-01-17 23:48:21.0312;Raven.Database.Indexing.IndexStorage;Info;Deleting index Temp/Posts/ByBlogId;
+2012-01-17 23:48:21.0312;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Temp/Blogs, Keys: blogs-65;
+2012-01-17 23:48:21.0312;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-65' was not found;
+2012-01-17 23:48:21.0449;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 73 - step 1/2;
+2012-01-17 23:48:21.0449;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 74 - step 2/2;
+2012-01-17 23:48:21.0449;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 74, currentWorkCounter: 74, will wait for additional work;
+2012-01-17 23:48:21.0449;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 74, currentWorkCounter: 74, will wait for additional work;
+2012-01-17 23:48:21.0449;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (blogs-65) from Temp/Blogs;
+2012-01-17 23:48:21.0839;Raven.Database.Server.HttpServer;Debug;Request # 212: POST    -    56 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:48:21.0839;Raven.Database.Server.HttpServer;Debug;"	DELETE blogs-65
+";
+2012-01-17 23:48:21.1230;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 74, currentWorkCounter: 74, will wait for additional work;
+2012-01-17 23:48:21.1484;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:48:21.1484;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:48:21.1484;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 74, currentWorkCounter: 74, will wait for additional work;
+2012-01-17 23:48:21.1484;Raven.Database.Server.HttpServer;Debug;Request # 213: GET     -     7 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:48:21.1718;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:21.1718;Raven.Database.Server.HttpServer;Debug;Request # 214: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:48:46.1162;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:48:46.1162;Raven.Database.Server.HttpServer;Debug;Request # 215: GET     -     1 ms - <default>  - 200 - /docs/blogs/97;
+2012-01-17 23:48:46.1328;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:46.1328;Raven.Database.Server.HttpServer;Debug;Request # 216: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:48:55.6914;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was found;
+2012-01-17 23:48:55.6914;Raven.Database.Server.HttpServer;Debug;Request # 217: GET     -     3 ms - <default>  - 200 - /docs/blogs/97;
+2012-01-17 23:48:55.6914;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:55.6914;Raven.Database.Server.HttpServer;Debug;Request # 218: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:48:55.7636;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:48:55.7636;Raven.Database.DocumentDatabase;Debug;Delete a document with key: blogs/97 and etag ;
+2012-01-17 23:48:55.7636;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was deleted;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 75 - step 1/2;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 76 - step 2/2;
+2012-01-17 23:48:55.7978;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 76, currentWorkCounter: 76, will wait for additional work;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 76, currentWorkCounter: 76, will wait for additional work;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 76, currentWorkCounter: 76, will wait for additional work;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Raven/DocumentsByEntityName, Keys: blogs/97;
+2012-01-17 23:48:55.7978;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was not found;
+2012-01-17 23:48:55.7978;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (blogs/97) from Raven/DocumentsByEntityName;
+2012-01-17 23:48:55.8144;Raven.Database.Indexing.TasksExecuter;Debug;Executing Index: Temp/Blogs, Keys: blogs/97;
+2012-01-17 23:48:55.8144;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs/97' was not found;
+2012-01-17 23:48:55.8144;Raven.Database.Indexing.Index.Indexing;Debug;Deleting (blogs/97) from Temp/Blogs;
+2012-01-17 23:48:55.7978;Raven.Database.Server.HttpServer;Debug;Request # 219: POST    -    51 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:48:55.8574;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 76, currentWorkCounter: 76, will wait for additional work;
+2012-01-17 23:48:55.8564;Raven.Database.Server.HttpServer;Debug;"	DELETE blogs/97
+";
+2012-01-17 23:48:55.8574;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:48:55.8574;Raven.Database.Server.HttpServer;Debug;Request # 220: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:48:55.8964;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:48:55.8964;Raven.Database.Server.HttpServer;Debug;Request # 221: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:49:25.6425;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:49:25.6425;Raven.Database.Server.HttpServer;Debug;Request # 222: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:49:25.7431;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for: __document_id:1;
+2012-01-17 23:49:25.7431;Raven.Database.Server.HttpServer;Debug;Request # 223: GET     -     4 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=__document_id%253A1&start=0&pageSize=1&aggregation=None;
+2012-01-17 23:49:53.1318;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:49:53.1318;Raven.Database.Server.HttpServer;Debug;Request # 224: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:49:53.1318;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:49:53.1318;Raven.Database.Server.HttpServer;Debug;Request # 225: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:49:57.4433;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:49:57.4433;Raven.Database.Server.HttpServer;Debug;Request # 226: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:49:57.4433;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:49:57.4433;Raven.Database.Server.HttpServer;Debug;Request # 227: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:50:07.6074;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:50:07.6074;Raven.Database.Server.HttpServer;Debug;Request # 228: GET     -     5 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:50:07.6806;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for: __document_id:1;
+2012-01-17 23:50:07.7451;Raven.Database.Server.HttpServer;Debug;Request # 229: GET     -   122 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=__document_id%253A1&start=0&pageSize=1&aggregation=None;
+2012-01-17 23:50:47.1386;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:50:47.1386;Raven.Database.Server.HttpServer;Debug;Request # 230: GET     -     5 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:50:47.1386;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:50:47.1386;Raven.Database.Server.HttpServer;Debug;Request # 231: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:50:47.2333;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:50:47.2333;Raven.Database.Server.HttpServer;Debug;Request # 232: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:50:47.2333;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:50:47.2333;Raven.Database.Server.HttpServer;Debug;Request # 233: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:50:55.1220;Raven.Database.Server.HttpServer;Debug;Request # 234: GET     -    26 ms - <default>  - 200 - /stats?noCache=-882694355;
+2012-01-17 23:50:59.5341;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:50:59.5341;Raven.Database.Server.HttpServer;Debug;Request # 235: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:50:59.5341;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:50:59.5341;Raven.Database.Server.HttpServer;Debug;Request # 236: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:51:05.0341;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:51:05.0341;Raven.Database.Server.HttpServer;Debug;Request # 237: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:51:05.0566;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:51:05.0566;Raven.Database.Server.HttpServer;Debug;Request # 238: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:51:19.5029;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:51:19.5029;Raven.Database.Server.HttpServer;Debug;Request # 239: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:51:19.5029;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:51:19.5029;Raven.Database.Server.HttpServer;Debug;Request # 240: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:51:19.5644;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:51:19.5644;Raven.Database.Server.HttpServer;Debug;Request # 241: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:51:19.5996;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:51:19.5996;Raven.Database.Server.HttpServer;Debug;Request # 242: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:51:58.2822;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:51:58.2822;Raven.Database.Server.HttpServer;Debug;Request # 243: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:51:58.3994;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:51:58.3994;Raven.Database.Server.HttpServer;Debug;Request # 244: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:52:17.6289;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:52:17.6289;Raven.Database.Server.HttpServer;Debug;Request # 245: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:52:17.6289;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:52:17.6289;Raven.Database.Server.HttpServer;Debug;Request # 246: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:52:17.7128;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:52:17.7128;Raven.Database.Server.HttpServer;Debug;Request # 247: GET     -     1 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:52:17.7128;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:52:17.7128;Raven.Database.Server.HttpServer;Debug;Request # 248: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:52:43.7705;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/blogs' was found;
+2012-01-17 23:52:43.7705;Raven.Database.Server.HttpServer;Debug;Request # 249: GET     -     4 ms - <default>  - 200 - /docs/Raven/Hilo/blogs;
+2012-01-17 23:52:43.7822;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:52:43.7822;Raven.Database.Server.HttpServer;Debug;Request # 250: GET     -     7 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:52:43.8115;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/blogs and etag 00000000-0000-0200-0000-00000000000a;
+2012-01-17 23:52:43.8115;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/blogs', update: True, ;
+2012-01-17 23:52:43.8115;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 77 - step 1/2;
+2012-01-17 23:52:43.8115;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 78 - step 2/2;
+2012-01-17 23:52:43.8115;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 78, currentWorkCounter: 78, will wait for additional work;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 78, currentWorkCounter: 78, will wait for additional work;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 78, currentWorkCounter: 78, will wait for additional work;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 79 - step 1/2;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 80 - step 2/2;
+2012-01-17 23:52:43.8261;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 80, currentWorkCounter: 80, will wait for additional work;
+2012-01-17 23:52:43.8466;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 80, currentWorkCounter: 80, will wait for additional work;
+2012-01-17 23:52:43.8466;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 80, currentWorkCounter: 80, will wait for additional work;
+2012-01-17 23:52:43.8466;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 80, currentWorkCounter: 80, will wait for additional work;
+2012-01-17 23:52:43.8115;Raven.Database.Server.HttpServer;Debug;Request # 251: PUT     -     2 ms - <default>  - 201 - /docs/Raven/Hilo/blogs;
+2012-01-17 23:52:43.9667;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:52:43.9667;Raven.Database.DocumentDatabase;Debug;Putting a document with key: blogs-129 and etag ;
+2012-01-17 23:52:43.9667;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'blogs-129', update: False, ;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 81 - step 1/2;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 82 - step 2/2;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 82, currentWorkCounter: 82, will wait for additional work;
+2012-01-17 23:52:43.9667;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 82, currentWorkCounter: 82, will wait for additional work;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs-129> indexed,omitNorms<Tag:Blogs> indexed,omitNorms<LastModified:20120117235243968>>;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 82, currentWorkCounter: 82, will wait for additional work;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Blogs;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Blogs' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:blogs-129>>;
+2012-01-17 23:52:43.9667;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Blogs;
+2012-01-17 23:52:43.9667;Raven.Database.Server.HttpServer;Debug;Request # 252: POST    -     5 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:52:43.9980;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:52:43.9980;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:52:43.9980;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 83 - step 1/2;
+2012-01-17 23:52:43.9980;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 84 - step 2/2;
+2012-01-17 23:52:43.9980;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 84, currentWorkCounter: 84, will wait for additional work;
+2012-01-17 23:52:43.9980;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 84, currentWorkCounter: 84, will wait for additional work;
+2012-01-17 23:52:43.9902;Raven.Database.Server.HttpServer;Debug;"	PUT blogs-129
+";
+2012-01-17 23:52:43.9980;Raven.Database.Server.HttpServer;Debug;Request # 253: GET     -     4 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:52:44.0439;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:52:44.0449;Raven.Database.Server.HttpServer;Debug;Request # 254: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:52:44.0449;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:52:44.0878;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 84, currentWorkCounter: 84, will wait for additional work;
+2012-01-17 23:52:44.0986;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 85 - step 1/2;
+2012-01-17 23:52:44.0986;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 86 - step 2/2;
+2012-01-17 23:52:44.0986;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 86, currentWorkCounter: 86, will wait for additional work;
+2012-01-17 23:52:44.0986;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 86, currentWorkCounter: 86, will wait for additional work;
+2012-01-17 23:52:44.1083;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 86, currentWorkCounter: 86, will wait for additional work;
+2012-01-17 23:52:44.1083;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 86, currentWorkCounter: 86, will wait for additional work;
+2012-01-17 23:53:03.6455;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:53:03.6455;Raven.Database.Server.HttpServer;Debug;Request # 255: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:53:03.6455;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:53:03.6455;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:53:03.6455;Raven.Database.Server.HttpServer;Debug;Request # 256: GET     -     5 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:53:17.0312;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:53:17.0312;Raven.Database.Server.HttpServer;Debug;Request # 257: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:53:17.0312;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:53:17.0312;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:53:17.0312;Raven.Database.Server.HttpServer;Debug;Request # 258: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:53:17.1035;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:53:17.1035;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:53:17.1035;Raven.Database.Server.HttpServer;Debug;Request # 259: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:53:17.1474;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:53:17.1474;Raven.Database.Server.HttpServer;Debug;Request # 260: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:53:17.2089;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:53:17.2089;Raven.Database.Server.HttpServer;Debug;Request # 261: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:53:17.5527;Raven.Database.Storage.IndexDefinitionStorage;Info;"New index Temp%2fPosts%2fByBlogId:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Temp_2fPosts_2fByBlogId : AbstractViewGenerator
+{
+	public Index_Temp_2fPosts_2fByBlogId()
+	{
+		this.ViewText = @""from doc in docs.Posts
+select new { BlogId = doc.BlogId }
+"";
+		this.ForEntityNames.Add(""Posts"");
+		this.AddMapDefinition(docs => from doc in docs
+			where doc[""@metadata""][""Raven-Entity-Name""] == ""Posts""
+			select new { BlogId = doc.BlogId, __document_id = doc.__document_id });
+		this.AddField(""BlogId"");
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""BlogId"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""BlogId"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using Raven.Database.Indexing;
+public class Index_Temp_2fPosts_2fByBlogId : AbstractViewGenerator
+{
+	public Index_Temp_2fPosts_2fByBlogId()
+	{
+		this.ViewText = @""from doc in docs.Posts
+select new { BlogId = doc.BlogId }
+"";
+		this.ForEntityNames.Add(""Posts"");
+		this.AddMapDefinition(docs => from doc in docs
+			where doc[""@metadata""][""Raven-Entity-Name""] == ""Posts""
+			select new { BlogId = doc.BlogId, __document_id = doc.__document_id });
+		this.AddField(""BlogId"");
+		this.AddField(""__document_id"");
+		this.AddQueryParameterForMap(""BlogId"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""BlogId"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+";
+2012-01-17 23:53:17.5527;Raven.Database.Indexing.IndexStorage;Info;Creating index Temp/Posts/ByBlogId with encoded name Temp/Posts/ByBlogId;
+2012-01-17 23:53:17.5527;Raven.Database.Indexing.Index.Indexing;Debug;Creating index for Temp/Posts/ByBlogId;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 87 - step 1/2;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 88 - step 2/2;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 88, currentWorkCounter: 88, will wait for additional work;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 89 - step 1/2;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 90 - step 2/2;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 90, currentWorkCounter: 90, will wait for additional work;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 90, currentWorkCounter: 90, will wait for additional work;
+2012-01-17 23:53:17.5615;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 90, currentWorkCounter: 90, will wait for additional work;
+2012-01-17 23:53:17.6591;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Posts/ByBlogId;
+2012-01-17 23:53:17.6591;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:53:17.6591;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 91 - step 1/2;
+2012-01-17 23:53:17.6591;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 92 - step 2/2;
+2012-01-17 23:53:17.6591;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 92, currentWorkCounter: 92, will wait for additional work;
+2012-01-17 23:53:17.6591;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 92, currentWorkCounter: 92, will wait for additional work;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Posts/ByBlogId' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:posts-1> indexed,tokenized<BlogId:blogs-65>>;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Posts/ByBlogId;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 92, currentWorkCounter: 92, will wait for additional work;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 93 - step 1/2;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 94 - step 2/2;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 94, currentWorkCounter: 94, will wait for additional work;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 94, currentWorkCounter: 94, will wait for additional work;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 94, currentWorkCounter: 94, will wait for additional work;
+2012-01-17 23:53:17.6855;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 94, currentWorkCounter: 94, will wait for additional work;
+2012-01-17 23:53:17.7675;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:53:17.7675;Raven.Database.Server.HttpServer;Debug;Request # 262: GET     -   476 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-129&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:55:00.9667;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:55:00.9667;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:55:00.9667;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:55:00.9667;Raven.Database.Server.HttpServer;Debug;Request # 263: GET     -    16 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:55:00.9667;Raven.Database.Server.HttpServer;Debug;Request # 264: GET     -    12 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:55:01.4775;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:55:01.4775;Raven.Database.Server.HttpServer;Debug;Request # 265: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:55:01.5771;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:55:01.5771;Raven.Database.Server.HttpServer;Debug;Request # 266: GET     -     6 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-129&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:55:06.3056;Raven.Database.Server.HttpServer;Debug;Request # 267: GET     -    31 ms - <default>  - 200 - /stats?noCache=-1379596287;
+2012-01-17 23:55:55.9833;Raven.Database.Server.HttpServer;Debug;Request # 268: GET     -    61 ms - <default>  - 200 - /stats?noCache=-1649899211;
+2012-01-17 23:56:10.9794;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:10.9794;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:56:10.9794;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:56:10.9794;Raven.Database.Server.HttpServer;Debug;Request # 269: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:10.9824;Raven.Database.Server.HttpServer;Debug;Request # 270: GET     -     4 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:56:17.0605;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:17.0605;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:56:17.0605;Raven.Database.Server.HttpServer;Debug;Request # 271: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:17.0605;Raven.Database.Server.HttpServer;Debug;Request # 272: GET     -     3 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-129&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:56:19.7763;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:19.7763;Raven.Database.Server.HttpServer;Debug;Request # 273: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:20.4921;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:56:20.4921;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:56:20.4921;Raven.Database.Server.HttpServer;Debug;Request # 274: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:56:33.6484;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:33.6484;Raven.Database.Server.HttpServer;Debug;Request # 275: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:33.6845;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Hilo/posts' was found;
+2012-01-17 23:56:33.6855;Raven.Database.Server.HttpServer;Debug;Request # 276: GET     -     0 ms - <default>  - 200 - /docs/Raven/Hilo/posts;
+2012-01-17 23:56:33.7753;Raven.Database.DocumentDatabase;Debug;Putting a document with key: Raven/Hilo/posts and etag 00000000-0000-0200-0000-000000000008;
+2012-01-17 23:56:33.7753;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'Raven/Hilo/posts', update: True, ;
+2012-01-17 23:56:33.7753;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 95 - step 1/2;
+2012-01-17 23:56:33.7753;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 96 - step 2/2;
+2012-01-17 23:56:33.7753;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 96, currentWorkCounter: 96, will wait for additional work;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 96, currentWorkCounter: 96, will wait for additional work;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 0 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 96, currentWorkCounter: 96, will wait for additional work;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 97 - step 1/2;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 98 - step 2/2;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 98, currentWorkCounter: 98, will wait for additional work;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 98, currentWorkCounter: 98, will wait for additional work;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 98, currentWorkCounter: 98, will wait for additional work;
+2012-01-17 23:56:33.7792;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 98, currentWorkCounter: 98, will wait for additional work;
+2012-01-17 23:56:33.7753;Raven.Database.Server.HttpServer;Debug;Request # 277: PUT     -     4 ms - <default>  - 201 - /docs/Raven/Hilo/posts;
+2012-01-17 23:56:33.9062;Raven.Database.DocumentDatabase;Debug;Executing batched commands in a single transaction;
+2012-01-17 23:56:33.9062;Raven.Database.DocumentDatabase;Debug;Putting a document with key: posts-33 and etag ;
+2012-01-17 23:56:33.9062;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Inserted a new document with key 'posts-33', update: False, ;
+2012-01-17 23:56:33.9062;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 99 - step 1/2;
+2012-01-17 23:56:33.9062;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 100 - step 2/2;
+2012-01-17 23:56:33.9062;Raven.Database.DocumentDatabase;Debug;Successfully executed 1 commands;
+2012-01-17 23:56:33.9062;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Raven/DocumentsByEntityName;
+2012-01-17 23:56:33.9062;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Raven/DocumentsByEntityName' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:posts-33> indexed,omitNorms<Tag:Posts> indexed,omitNorms<LastModified:20120117235633908>>;
+2012-01-17 23:56:33.9287;Raven.Database.Indexing.AbstractIndexingExecuter;Debug;Indexing 1 documents for index: Temp/Posts/ByBlogId;
+2012-01-17 23:56:33.9287;Raven.Database.Indexing.Index.Indexing;Debug;Index 'Temp/Posts/ByBlogId' resulted in: Document<stored/uncompressed,indexed,tokenized,omitNorms<__document_id:posts-33> indexed,tokenized<BlogId:blogs-129>>;
+2012-01-17 23:56:33.9287;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Temp/Posts/ByBlogId;
+2012-01-17 23:56:33.9062;Raven.Database.Server.HttpServer;Debug;Request # 278: POST    -     8 ms - <default>  - 200 - /bulk_docs;
+2012-01-17 23:56:33.9609;Raven.Database.Server.HttpServer;Debug;"	PUT posts-33
+";
+2012-01-17 23:56:33.9755;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 100, currentWorkCounter: 100, will wait for additional work;
+2012-01-17 23:56:33.9755;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 100, currentWorkCounter: 100, will wait for additional work;
+2012-01-17 23:56:33.9755;Raven.Database.Indexing.Index.Indexing;Debug;Indexed 1 documents for Raven/DocumentsByEntityName;
+2012-01-17 23:56:33.9755;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:33.9755;Raven.Database.Server.HttpServer;Debug;Request # 279: GET     -     0 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:33.9755;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:56:33.9824;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'posts-33' was found;
+2012-01-17 23:56:33.9824;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 101 - step 1/2;
+2012-01-17 23:56:33.9824;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 102 - step 2/2;
+2012-01-17 23:56:33.9824;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 102, currentWorkCounter: 102, will wait for additional work;
+2012-01-17 23:56:33.9824;Raven.Database.Server.HttpServer;Debug;Request # 280: GET     -     4 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-129&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:56:34.0058;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 102, currentWorkCounter: 102, will wait for additional work;
+2012-01-17 23:56:34.0244;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 103 - step 1/2;
+2012-01-17 23:56:34.0244;Raven.Database.Indexing.WorkContext;Debug;Incremented work counter to 104 - step 2/2;
+2012-01-17 23:56:34.0244;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 104, currentWorkCounter: 104, will wait for additional work;
+2012-01-17 23:56:34.0244;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 104, currentWorkCounter: 104, will wait for additional work;
+2012-01-17 23:56:34.0322;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 104, currentWorkCounter: 104, will wait for additional work;
+2012-01-17 23:56:34.0322;Raven.Database.Indexing.WorkContext;Debug;Not work was found, workerWorkCounter: 104, currentWorkCounter: 104, will wait for additional work;
+2012-01-17 23:56:40.0478;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:40.0478;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Blogs for all documents;
+2012-01-17 23:56:40.0478;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'blogs-129' was found;
+2012-01-17 23:56:40.0478;Raven.Database.Server.HttpServer;Debug;Request # 281: GET     -     1 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:40.0478;Raven.Database.Server.HttpServer;Debug;Request # 282: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Blogs?query=&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:56:40.1933;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'Raven/Replication/Destinations' was not found;
+2012-01-17 23:56:40.1933;Raven.Database.Server.HttpServer;Debug;Request # 283: GET     -     2 ms - <default>  - 404 - /docs/Raven/Replication/Destinations;
+2012-01-17 23:56:40.1933;Raven.Database.Indexing.Index.Querying;Debug;Issuing query on index Temp/Posts/ByBlogId for: BlogId:blogs\-129;
+2012-01-17 23:56:40.1933;Raven.Storage.Esent.StorageActions.DocumentStorageActions;Debug;Document with key 'posts-33' was found;
+2012-01-17 23:56:40.1933;Raven.Database.Server.HttpServer;Debug;Request # 284: GET     -     2 ms - <default>  - 200 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-129&start=0&pageSize=128&aggregation=None;
+2012-01-17 23:56:59.7744;Raven.Database.Server.HttpServer;Debug;Request # 285: GET     -   125 ms - <default>  - 200 - /stats?noCache=1657638567;
+2012-01-17 23:57:11.5273;Raven.Database.Server.HttpServer;Debug;Request # 286: GET     -     1 ms - <default>  - 304 - /indexes/dynamic/Posts?query=BlogId%253Ablogs%255C-129&start=0&pageSize=128&aggregation=None;

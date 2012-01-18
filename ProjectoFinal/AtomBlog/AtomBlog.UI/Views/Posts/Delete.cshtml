@@ -1,0 +1,35 @@
+@model AtomBlog.Domain.AtomDomainModel.Post
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">Blog</div>
+    <div class="display-field">@(Model.Blog == null ? "None" : Model.Blog.Title)</div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Content</div>
+    <div class="display-field">@Model.Content</div>
+
+    <div class="display-label">LastUpdated</div>
+    <div class="display-field">@Model.LastUpdated</div>
+
+    <div class="display-label">PublishDate</div>
+    <div class="display-field">@Model.PublishDate</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

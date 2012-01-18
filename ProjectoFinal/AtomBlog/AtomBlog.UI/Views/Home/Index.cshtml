@@ -1,0 +1,26 @@
+﻿@{  
+    ViewBag.Title = "Home Page";
+}
+<div class="hero-unit">
+    <h1>@ViewBag.Message</h1>
+    <p>another Atom Blog site implementation</p>
+    <p>@Html.ActionLink("Blogs »", "Index", "Blogs", null, new { @class = "btn primary large" })</p>     
+</div>        
+<p>This aplication provides 2 functionalities</p>
+<div class="row"> 
+        <div class="span5"> 
+          <h2>Blogs MVC</h2> 
+          <p>Provides a web interface for Blogs and Posts.</p> 
+          <p><a class="btn" href="http://www.asp.net/mvc/">MVC details &raquo;</a></p> 
+        </div> 
+        <div class="span5"> 
+          <h2>Blogs Atom</h2> 
+           <p>Provides Atom feed for Blogs and Posts.</p> 
+          <p><a class="btn" href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom details &raquo;</a></p> 
+       </div> 
+        <div class="span6"> 
+          <h2>Blogs AtomPub</h2> 
+          <p>Provides AtomPub for Blogs and Posts creation and edition.</p> 
+          <p><a class="btn" href="http://atompub.org/">AtomPub details &raquo;</a></p> 
+        </div> 
+</div>

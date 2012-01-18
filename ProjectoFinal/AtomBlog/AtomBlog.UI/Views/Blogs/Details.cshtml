@@ -1,0 +1,32 @@
+@model AtomBlog.Domain.AtomDomainModel.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Blog</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">@Model.Description</div>
+
+    <div class="display-label">PublishDate</div>
+    <div class="display-field">@Model.PublishDate</div>
+
+    <div class="display-label">LastUpdatedTime</div>
+    <div class="display-field">@Model.LastUpdatedTime</div>
+
+    <div class="display-label">Posts</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.Posts).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

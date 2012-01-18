@@ -1,0 +1,432 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="7" />
+      <Item value="string" priority="21" />
+      <Item value="return" priority="20" />
+      <Item value="host" priority="0" />
+      <Item value="this" priority="8" />
+      <Item value="RouteTable" priority="1" />
+      <Item value="HttpApplication`0" priority="0" />
+      <Item value="HttpContext`0" priority="0" />
+      <Item value="AtomWebApiService`0" priority="0" />
+      <Item value="routes" priority="0" />
+      <Item value="class" priority="0" />
+      <Item value="override" priority="0" />
+      <Item value="ctor" priority="4" />
+      <Item value="base" priority="0" />
+      <Item value="true" priority="3" />
+      <Item value="new" priority="30" />
+      <Item value="Formatters" priority="4" />
+      <Item value="AtomFeedVersionFormatter`0" priority="0" />
+      <Item value="varsion" priority="0" />
+      <Item value="version" priority="0" />
+      <Item value="syndicationFeed" priority="2" />
+      <Item value="interface" priority="1" />
+      <Item value="WebGet" priority="1" />
+      <Item value="UriTemplate" priority="1" />
+      <Item value="List" priority="1" />
+      <Item value="AtomBlog" priority="0" />
+      <Item value="prop" priority="8" />
+      <Item value="int" priority="3" />
+      <Item value="NullReferenceException`0" priority="0" />
+      <Item value="List&lt;Blog&gt;" priority="0" />
+      <Item value="IEnumerable" priority="2" />
+      <Item value="Blog" priority="0" />
+      <Item value="Id" priority="6" />
+      <Item value="Name" priority="0" />
+      <Item value="Description" priority="1" />
+      <Item value="bloglist" priority="0" />
+      <Item value="Blog`0" priority="6" />
+      <Item value="Post" priority="5" />
+      <Item value="request" priority="4" />
+      <Item value="Post`0" priority="10" />
+      <Item value="bool" priority="2" />
+      <Item value="var" priority="7" />
+      <Item value="value" priority="3" />
+      <Item value="as" priority="0" />
+      <Item value="if" priority="5" />
+      <Item value="blog" priority="23" />
+      <Item value="null" priority="4" />
+      <Item value="SyndicationItem" priority="0" />
+      <Item value="contentHeaders" priority="1" />
+      <Item value="Title" priority="4" />
+      <Item value="ContextBoundObject`0" priority="0" />
+      <Item value="foreach" priority="1" />
+      <Item value="collection" priority="1" />
+      <Item value="resourceCollectionInfo" priority="1" />
+      <Item value="postList" priority="1" />
+      <Item value="context" priority="0" />
+      <Item value="HttpResponseMessage&lt;Post&gt;" priority="1" />
+      <Item value="Created" priority="0" />
+      <Item value="post" priority="29" />
+      <Item value="syndicationItem" priority="9" />
+      <Item value="DateTimeOffset`0" priority="0" />
+      <Item value="TextSyndicationContent" priority="0" />
+      <Item value="IDictionary" priority="0" />
+      <Item value="stream" priority="0" />
+      <Item value="LastUpdated" priority="0" />
+      <Item value="id" priority="5" />
+      <Item value="Headers" priority="0" />
+      <Item value="response" priority="3" />
+      <Item value="Uri" priority="2" />
+      <Item value="Blogs" priority="5" />
+      <Item value="b" priority="1" />
+      <Item value="p" priority="7" />
+      <Item value="maxId" priority="1" />
+      <Item value="posts" priority="3" />
+      <Item value="typeof" priority="0" />
+      <Item value="type" priority="0" />
+      <Item value="Continue" priority="0" />
+      <Item value="HttpResponseMessage`0" priority="2" />
+      <Item value="HttpResponseMessage&lt;IEnumerable&lt;Post&gt;&gt;" priority="0" />
+      <Item value="OK" priority="3" />
+      <Item value="HttpResponseMessage" priority="0" />
+      <Item value="statusCode" priority="0" />
+      <Item value="HttpStatusCode`0" priority="0" />
+      <Item value="AtomPostFeedFormatter`0" priority="0" />
+      <Item value="false" priority="0" />
+      <Item value="throw" priority="0" />
+      <Item value="NotImplementedException`0" priority="0" />
+      <Item value="AtomPostListFeedFormatter`0" priority="0" />
+      <Item value="AtomFeedBlogFormatter`0" priority="0" />
+      <Item value="AtomFeedBlogListFormatter`0" priority="0" />
+      <Item value="HttpResponseMessage&lt;ServiceDocument&gt;" priority="0" />
+      <Item value="serviceDocument" priority="0" />
+      <Item value="HttpResponseMessage&lt;IEnumerable&lt;Blog&gt;&gt;" priority="0" />
+      <Item value="HttpResponseMessage&lt;Blog&gt;" priority="0" />
+      <Item value="Updated" priority="0" />
+      <Item value="blogSyndicationItem" priority="2" />
+      <Item value="LastUpdatedTime" priority="0" />
+      <Item value="PublishDate" priority="1" />
+      <Item value="blogs" priority="1" />
+      <Item value="ServiceDocument" priority="0" />
+      <Item value="postItem" priority="0" />
+      <Item value="IBlogSerive`0" priority="0" />
+      <Item value="repository" priority="1" />
+      <Item value="_repository" priority="5" />
+      <Item value="IBlogService" priority="0" />
+      <Item value="TType`0" priority="6" />
+      <Item value="TKey`0" priority="1" />
+      <Item value="SyndicationLink" priority="0" />
+      <Item value="blogId" priority="2" />
+      <Item value="private" priority="2" />
+      <Item value="_blogStore" priority="1" />
+      <Item value="session" priority="5" />
+      <Item value="IQueryable`0" priority="1" />
+      <Item value="item" priority="5" />
+      <Item value="BlogService" priority="0" />
+      <Item value="_blogService" priority="18" />
+      <Item value="_postService" priority="13" />
+      <Item value="_store" priority="3" />
+      <Item value="object" priority="0" />
+      <Item value="IFormatProvider`0" priority="0" />
+      <Item value="else" priority="0" />
+      <Item value="_id" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.ApplicationServer.Http.HttpServiceHost">
+      <Item value="AddHttpEndpoint`0" priority="0" />
+      <Item value="BaseAddresses" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.Routing.RouteTable">
+      <Item value="Routes" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.UI.MvcApplication">
+      <Item value="Context" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.HttpContext">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpContext">
+      <Item value="Handler" priority="0" />
+      <Item value="Server" priority="0" />
+      <Item value="CurrentHandler" priority="0" />
+      <Item value="Profile" priority="0" />
+      <Item value="ApplicationInstance" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Routing.RouteCollection">
+      <Item value="MapPageRoute`0" priority="0" />
+      <Item value="MapServiceRoute`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.AtomFeedServiceConfiguration">
+      <Item value="Formatters" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.Formatting.MediaTypeFormatterCollection">
+      <Item value="Add`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.AtomFeedService">
+      <Item value="GetType`0" priority="1" />
+      <Item value="ServiceURI" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="Assembly" priority="0" />
+      <Item value="InvokeMember`0" priority="0" />
+      <Item value="IsAssignableFrom`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Version">
+      <Item value="Major" priority="0" />
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Domain.AtomDomainModel.Post">
+      <Item value="Equals`0" priority="0" />
+      <Item value="Id" priority="8" />
+      <Item value="Title" priority="0" />
+      <Item value="PublishDate" priority="0" />
+      <Item value="Content" priority="0" />
+      <Item value="BlogId" priority="9" />
+      <Item value="Blog" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Syndication.SyndicationFeed">
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Domain.AtomDomainModel.Blog">
+      <Item value="Id" priority="6" />
+      <Item value="Name" priority="0" />
+      <Item value="Description" priority="0" />
+      <Item value="Title" priority="1" />
+      <Item value="Posts" priority="3" />
+      <Item value="LastUpdatedTime" priority="0" />
+      <Item value="PublishDate" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Add`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Syndication.ResourceCollectionInfo">
+      <Item value="Accepts" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ObjectModel.Collection`1">
+      <Item value="Add`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Count`1" priority="2" />
+      <Item value="FirstOrDefault`1" priority="1" />
+      <Item value="Where`1" priority="1" />
+      <Item value="GetEnumerator`0" priority="0" />
+      <Item value="Concat`1" priority="0" />
+      <Item value="Max`2" priority="1" />
+      <Item value="Select`2" priority="0" />
+      <Item value="ToList`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.TransportContext">
+      <Item value="GetChannelBinding`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.Headers.HttpContentHeaders">
+      <Item value="ContentLocation" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.HttpRequestMessage`1">
+      <Item value="Content" priority="0" />
+      <Item value="RequestUri" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.ObjectContent`1">
+      <Item value="ReadAsAsync`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Threading.Tasks.Task`1">
+      <Item value="Result" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Syndication.SyndicationItem">
+      <Item value="Id" priority="0" />
+      <Item value="Title" priority="0" />
+      <Item value="PublishDate" priority="2" />
+      <Item value="Content" priority="2" />
+      <Item value="LastUpdatedTime" priority="2" />
+      <Item value="Links" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Syndication.TextSyndicationContent">
+      <Item value="Text" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.Syndication.TextSyndicationContent">
+      <Item value="CreatePlaintextContent`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.ServiceModel.Syndication.SyndicationContent">
+      <Item value="Type" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="0" />
+      <Item value="Format`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.HttpResponseMessage`1">
+      <Item value="Headers" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Net.Http.Headers.HttpResponseHeaders">
+      <Item value="Location" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerator`1">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="Parse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.HttpStatusCode">
+      <Item value="OK" priority="1" />
+      <Item value="Unused" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.AtomFeedHttpConfiguration">
+      <Item value="CreateInstance" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.MediaFormatters.AtomPostFeedFormatter">
+      <Item value="ServiceURI" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Core.MediaFormatters.AtomFeedBlogFormatter">
+      <Item value="ServiceURI" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.ServiceModel.Syndication.SyndicationLink">
+      <Item value="CreateAlternateLink`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.Entity.DbSet`1">
+      <Item value="Where`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Random">
+      <Item value="Next`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Raven.Client.IDocumentSession">
+      <Item value="Query`2" priority="0" />
+      <Item value="Load`1" priority="0" />
+      <Item value="Store`0" priority="0" />
+      <Item value="SaveChanges`0" priority="0" />
+      <Item value="Advanced" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.DocumentRepository.RavenDB.GenericRavenDBDocumentRepository`1">
+      <Item value="Get`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.Domain.Repositories.IDocumentRepository`2">
+      <Item value="GetAll`0" priority="0" />
+      <Item value="Get`0" priority="0" />
+      <Item value="Create`0" priority="0" />
+      <Item value="Update`0" priority="0" />
+      <Item value="Delete`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.BlogServices.BlogService">
+      <Item value="GetAll`0" priority="6" />
+      <Item value="Create`0" priority="1" />
+      <Item value="Update`0" priority="2" />
+      <Item value="Delete`0" priority="1" />
+      <Item value="Get`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AtomBlog.BlogServices.PostService">
+      <Item value="Get`0" priority="5" />
+      <Item value="GetAll`0" priority="1" />
+      <Item value="Create`0" priority="1" />
+      <Item value="Update`0" priority="1" />
+      <Item value="Delete`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IQueryable`1">
+      <Item value="Where`1" priority="2" />
+      <Item value="Include`2" priority="1" />
+      <Item value="FirstOrDefault`1" priority="0" />
+      <Item value="ToList`1" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Raven.Client.ISyncAdvancedSessionOperation">
+      <Item value="GetDocumentId`0" priority="1" />
+      <Item value="DocumentStore" priority="0" />
+      <Item value="DatabaseCommands" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Raven.Client.IDocumentStore">
+      <Item value="Identifier" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Raven.Client.Linq.IRavenQueryable`1">
+      <Item value="All`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Raven.Client.Document.DocumentStore">
+      <Item value="Conventions" priority="3" />
+      <Item value="Identifier" priority="1" />
+      <Item value="ApiKey" priority="0" />
+      <Item value="ResourceManagerId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Raven.Client.Document.DocumentConvention">
+      <Item value="DocumentKeyGenerator" priority="0" />
+      <Item value="IdentityTypeConvertors" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="IndexOf`0" priority="0" />
+      <Item value="Substring`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="E803C91E-8502-4764-A220-D2E9410C3DF6/f:Program.cs" caret="435" fromTop="12" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:MediaFormatters/f:AtomFeedPostFormatter.cs" caret="809" fromTop="5" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:MediaFormatters/f:AtomFeedBlogListFormatter.cs" caret="1338" fromTop="17" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:MediaFormatters/f:AtomFeedBlogFormatter.cs" caret="0" fromTop="0" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:Utils/f:BlogAtomConverter.cs" caret="1528" fromTop="15" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:Utils/f:PostAtomConverter.cs" caret="1602" fromTop="23" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Views/d:Blogs/f:Index.cshtml" caret="100" fromTop="6" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Models/f:AtomBlogUIContext.cs" caret="607" fromTop="12" />
+      <File id="793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4/f:BlogRavenDBDocumentRepository.cs" caret="335" fromTop="10" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:Services/f:IService.cs" caret="168" fromTop="7" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedHttpConfiguration.cs" caret="0" fromTop="0" />
+      <File id="4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81/f:BlogService.cs" caret="288" fromTop="10" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Views/d:Blogs/f:Delete.cshtml" caret="193" fromTop="9" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:Repositories/f:IDocumentRepository.cs" caret="283" fromTop="13" />
+      <File id="793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4/f:PostRavenDBDocumentRepository.cs" caret="335" fromTop="10" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:PostsController.cs" caret="1017" fromTop="11" />
+      <File id="4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81/f:PostService.cs" caret="289" fromTop="10" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Views/d:Blogs/f:Details.cshtml" caret="219" fromTop="11" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:AccountController.cs" caret="0" fromTop="0" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Blog.cs" caret="166" fromTop="8" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Post.cs" caret="166" fromTop="8" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1136" fromTop="15" />
+      <File id="793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4/f:GenericRavenDBDocumentRepository.cs" caret="664" fromTop="8" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:MediaFormatters/f:AtomFeedServiceDocumentFormatter.cs" caret="998" fromTop="8" />
+      <File id="4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81/f:GenericService.cs" caret="512" fromTop="14" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/d:MediaFormatters/f:AtomFeedPostListFormatter.cs" caret="1102" fromTop="3" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="9446" fromTop="11" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:BlogsController.cs" caret="603" fromTop="11" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Views/d:Home/f:Index.cshtml" caret="1020" fromTop="14" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:PostsController.cs" caret="1850" fromTop="19" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:PostsController.cs" caret="2499" fromTop="17" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:PostsController.cs" caret="2737" fromTop="21" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Controllers/f:PostsController.cs" caret="2301" fromTop="17" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="3236" fromTop="13" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="3236" fromTop="29" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="3084" fromTop="33" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="2813" fromTop="26" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="2561" fromTop="20" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="2312" fromTop="14" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="2069" fromTop="8" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1840" fromTop="2" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1603" fromTop="0" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Blog.cs" caret="206" fromTop="24" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Blog.cs" caret="166" fromTop="9" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Blog.cs" caret="206" fromTop="21" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Post.cs" caret="206" fromTop="11" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Post.cs" caret="206" fromTop="22" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Blog.cs" caret="166" fromTop="8" />
+      <File id="C64F53E0-392A-4F6D-A662-321BB5002074/d:AtomDomainModel/f:Post.cs" caret="166" fromTop="8" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1365" fromTop="21" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/f:Global.asax.cs" caret="1136" fromTop="15" />
+      <File id="793EA2A0-C59B-4AF0-8BC1-E22B8EF72CF4/f:GenericRavenDBDocumentRepository.cs" caret="617" fromTop="5" />
+      <File id="4D2ACE25-B9FB-4BC4-878C-D6C549E7EB81/f:GenericService.cs" caret="609" fromTop="18" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="8413" fromTop="11" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="9000" fromTop="16" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="9432" fromTop="12" />
+      <File id="950C3C10-75BF-4926-987D-F8D8F9B2C238/f:AtomFeedService.cs" caret="7304" fromTop="10" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Views/d:Home/f:Index.cshtml" caret="775" fromTop="15" />
+      <File id="0936B1E0-775D-425E-AE82-CDFE1A58CD8C/d:Views/d:Home/f:Index.cshtml" caret="1020" fromTop="20" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

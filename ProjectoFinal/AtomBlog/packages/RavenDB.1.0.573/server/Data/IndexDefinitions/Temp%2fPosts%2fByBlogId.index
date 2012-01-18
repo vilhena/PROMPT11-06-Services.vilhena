@@ -1,0 +1,18 @@
+{
+  "Name": "Temp/Posts/ByBlogId",
+  "Map": "from doc in docs.Posts\r\nselect new { BlogId = doc.BlogId }",
+  "Maps": [
+    "from doc in docs.Posts\r\nselect new { BlogId = doc.BlogId }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}
